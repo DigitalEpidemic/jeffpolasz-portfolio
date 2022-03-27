@@ -17,7 +17,7 @@ const Navbar = () => {
         borderColor={useColorModeValue("gray.200", "gray.900")}
         align="center"
       >
-        <Logo />
+        <Logo logoText="Jeffrey Polasz" />
         <MenuToggle onToggle={onToggle} isOpen={isOpen} />
       </Flex>
     </Box>

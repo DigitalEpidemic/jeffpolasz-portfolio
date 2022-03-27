@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Flex,
   Text,
@@ -5,7 +6,11 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-const Logo = () => {
+interface LogoProps {
+  logoText: string;
+}
+
+const Logo: React.FC<LogoProps> = ({ logoText }) => {
   return (
     <Flex
       flex={{ base: 1 }}
@@ -17,7 +22,7 @@ const Logo = () => {
         fontFamily={"heading"}
         color={useColorModeValue("gray.800", "white")}
       >
-        Jeffrey Polasz
+        {logoText}
       </Text>
     </Flex>
   );
