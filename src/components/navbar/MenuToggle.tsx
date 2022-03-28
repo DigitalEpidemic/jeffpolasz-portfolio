@@ -9,7 +9,7 @@ interface HamburgerMenuProps {
 
 const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ onToggle, isOpen }) => {
   return (
-    <Flex mr={{ base: 2 }} display={{ base: "auto", md: "none" }}>
+    <Flex mr={2} display={{ base: "auto", md: "none" }}>
       <IconButton
         onClick={onToggle}
         icon={isOpen ? <GrClose /> : <GrMenu />}
