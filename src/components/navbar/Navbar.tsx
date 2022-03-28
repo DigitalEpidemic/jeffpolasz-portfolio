@@ -2,6 +2,7 @@ import {
   Box,
   Collapse,
   Flex,
+  Link,
   Stack,
   Text,
   useColorModeValue,
@@ -27,11 +28,11 @@ const Navbar = () => {
       >
         <Logo logoText="Jeffrey Polasz" />
         <MenuToggle onToggle={onToggle} isOpen={isOpen} />
-
-        <Collapse in={isOpen} animateOpacity>
-          <MobileNavDropdown />
-        </Collapse>
       </Flex>
+
+      <Collapse in={isOpen} animateOpacity>
+        <MobileNavDropdown />
+      </Collapse>
     </Box>
   );
 };
@@ -40,7 +41,8 @@ const MobileNavDropdown = () => {
   return (
     <Stack
       bg={useColorModeValue("white", "gray.800")}
-      p={4}
+      pt={2}
+      pb={4}
       display={{ md: "none" }}
     >
       {NAV_ITEMS.map((navItem) => (
@@ -50,8 +52,33 @@ const MobileNavDropdown = () => {
   );
 };
 
-const MobileNavItem: React.FC<NavItemProps> = ({ label }) => {
-  return <Text>{label}</Text>;
+const MobileNavItem: React.FC<NavItemProps> = ({ label, children, href }) => {
+  const { onToggle } = useDisclosure();
+
+  return (
+    <Stack spacing={4} onClick={children && onToggle}>
+      <Flex
+        px={6}
+        py={3}
+        mt={-2}
+        as={Link}
+        href={href ?? "#"}
+        justify={"space-between"}
+        align={"center"}
+        _hover={{
+          background: "gray.200",
+          textDecoration: "none",
+        }}
+      >
+        <Text
+          fontWeight={600}
+          color={useColorModeValue("gray.600", "gray.200")}
+        >
+          {label}
+        </Text>
+      </Flex>
+    </Stack>
+  );
 };
 
 interface NavItemProps {
@@ -63,41 +90,19 @@ interface NavItemProps {
 
 const NAV_ITEMS: Array<NavItemProps> = [
   {
-    label: "Inspiration",
-    children: [
-      {
-        label: "Explore Design Work",
-        subLabel: "Trending Design to inspire you",
-        href: "#",
-      },
-      {
-        label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
-        href: "#",
-      },
-    ],
-  },
-  {
-    label: "Find Work",
-    children: [
-      {
-        label: "Job Board",
-        subLabel: "Find your dream design job",
-        href: "#",
-      },
-      {
-        label: "Freelance Projects",
-        subLabel: "An exclusive list for contract work",
-        href: "#",
-      },
-    ],
-  },
-  {
-    label: "Learn Design",
+    label: "Game Projects",
     href: "#",
   },
   {
-    label: "Hire Designers",
+    label: "Web Projects",
+    href: "#",
+  },
+  {
+    label: "Resume",
+    href: "#",
+  },
+  {
+    label: "Contact Me",
     href: "#",
   },
 ];
