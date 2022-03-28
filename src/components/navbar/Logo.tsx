@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Flex,
+  Link,
   Text,
   useBreakpointValue,
   useColorModeValue,
@@ -12,15 +13,18 @@ interface LogoProps {
 
 const Logo: React.FC<LogoProps> = ({ logoText }) => {
   return (
-    <Flex
-      flex={{ base: 1 }}
-      ml={{ base: 2 }}
-      justify={{ base: "start", md: "start" }}
-    >
+    <Flex flex={1} justify={{ base: "start", md: "start" }}>
       <Text
+        as={Link}
         textAlign={useBreakpointValue({ base: "center", md: "left" })}
         fontFamily={"heading"}
+        fontSize={"xl"}
+        fontWeight={"semibold"}
         color={useColorModeValue("gray.800", "white")}
+        p={2}
+        _hover={{
+          textDecoration: "none",
+        }}
       >
         {logoText}
       </Text>
