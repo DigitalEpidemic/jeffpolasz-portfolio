@@ -26,7 +26,14 @@ const Navbar = () => {
         borderColor={useColorModeValue("gray.200", "gray.900")}
         align="center"
       >
-        <Logo logoText="Jeffrey Polasz" />
+        <Flex
+          flex={1}
+          align={"center"}
+          justify={{ base: "start", md: "start" }}
+        >
+          <Logo logoText="Jeffrey Polasz" />
+          <DesktopNav />
+        </Flex>
         <MenuToggle onToggle={onToggle} isOpen={isOpen} />
       </Flex>
 
@@ -34,6 +41,27 @@ const Navbar = () => {
         <MobileNavDropdown />
       </Collapse>
     </Box>
+  );
+};
+
+const DesktopNav = () => {
+  return (
+    <Flex display={{ base: "none", md: "flex" }} ml={10}>
+      <Stack direction={"row"} spacing={4}>
+        {NAV_ITEMS.map((navItem) => (
+          <Link
+            p={2}
+            href={navItem.href ?? "#"}
+            _hover={{
+              color: useColorModeValue("black", "gray.200"),
+              textDecoration: "none",
+            }}
+          >
+            {navItem.label}
+          </Link>
+        ))}
+      </Stack>
+    </Flex>
   );
 };
 
