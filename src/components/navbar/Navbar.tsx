@@ -56,7 +56,11 @@ const DarkModeToggle = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Button variant={"ghost"} onClick={toggleColorMode} bg={""}>
-      {colorMode === "light" ? <BsFillMoonStarsFill /> : <BsSunFill />}
+      {colorMode === "light" ? (
+        <BsFillMoonStarsFill size={18} />
+      ) : (
+        <BsSunFill size={18} />
+      )}
     </Button>
   );
 };
@@ -112,7 +116,7 @@ const MobileNavItem: React.FC<NavItemProps> = ({ label, children, href }) => {
         justify={"space-between"}
         align={"center"}
         _hover={{
-          background: "gray.200",
+          background: useColorModeValue("gray.200", "gray.700"),
           textDecoration: "none",
         }}
       >
