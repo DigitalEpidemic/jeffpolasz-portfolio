@@ -1,18 +1,22 @@
 import {
   Box,
+  Button,
   Collapse,
   Flex,
   Link,
   Stack,
   Text,
+  useColorMode,
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
+import { BsFillMoonStarsFill, BsSunFill } from "react-icons/bs";
 import Logo from "./Logo";
 import MenuToggle from "./MenuToggle";
 
 const Navbar = () => {
   const { onToggle, isOpen } = useDisclosure();
+
   return (
     <Box>
       <Flex
@@ -23,7 +27,7 @@ const Navbar = () => {
         px={4}
         borderBottom={1}
         borderStyle={"solid"}
-        borderColor={useColorModeValue("gray.200", "gray.900")}
+        borderColor={useColorModeValue("gray.200", "gray.700")}
         align="center"
       >
         <Flex
@@ -34,13 +38,26 @@ const Navbar = () => {
           <Logo logoText="Jeffrey Polasz" />
           <DesktopNav />
         </Flex>
-        <MenuToggle onToggle={onToggle} isOpen={isOpen} />
+
+        <Stack direction={"row"} spacing={7}>
+          <DarkModeToggle />
+          <MenuToggle onToggle={onToggle} isOpen={isOpen} />
+        </Stack>
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
         <MobileNavDropdown />
       </Collapse>
     </Box>
+  );
+};
+
+const DarkModeToggle = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+  return (
+    <Button variant={"ghost"} onClick={toggleColorMode} bg={""}>
+      {colorMode === "light" ? <BsFillMoonStarsFill /> : <BsSunFill />}
+    </Button>
   );
 };
 
