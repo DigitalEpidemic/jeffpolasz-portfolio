@@ -50,6 +50,7 @@ const DesktopNav = () => {
       <Stack direction={"row"} spacing={4}>
         {NAV_ITEMS.map((navItem) => (
           <Link
+            key={navItem.label}
             p={2}
             href={navItem.href ?? "#"}
             _hover={{
