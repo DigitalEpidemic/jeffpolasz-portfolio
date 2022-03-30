@@ -2,12 +2,12 @@ import React from "react";
 import { Flex, IconButton } from "@chakra-ui/react";
 import { GrClose, GrMenu } from "react-icons/gr";
 
-interface HamburgerMenuProps {
+interface MenuToggleProps {
   onToggle: () => void;
   isOpen: boolean;
 }
 
-const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ onToggle, isOpen }) => {
+const MenuToggle: React.FC<MenuToggleProps> = ({ onToggle, isOpen }) => {
   return (
     <Flex mr={2} display={{ base: "auto", md: "none" }}>
       <IconButton
@@ -20,4 +20,4 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ onToggle, isOpen }) => {
   );
 };
 
-export default HamburgerMenu;
+export default MenuToggle;
