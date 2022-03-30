@@ -2,9 +2,12 @@ import {
   Box,
   Button,
   Collapse,
+  ColorMode,
   Flex,
+  FormLabel,
   Link,
   Stack,
+  Switch,
   Text,
   useColorMode,
   useColorModeValue,
@@ -16,6 +19,7 @@ import MenuToggle from "./MenuToggle";
 
 const Navbar = () => {
   const { onToggle, isOpen } = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <Box>
@@ -40,7 +44,11 @@ const Navbar = () => {
         </Flex>
 
         <Stack direction={"row"} spacing={7}>
-          <DarkModeToggle />
+          <DarkModeToggle
+            colorMode={colorMode}
+            toggleColorMode={toggleColorMode}
+            isSwitch
+          />
           <MenuToggle onToggle={onToggle} isOpen={isOpen} />
         </Stack>
       </Flex>
@@ -52,16 +60,37 @@ const Navbar = () => {
   );
 };
 
-const DarkModeToggle = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
+interface DarkModeToggleProps {
+  colorMode: ColorMode;
+  toggleColorMode: () => void;
+  isSwitch?: boolean;
+}
+
+// TODO: Store dark mode state in localstorage
+const DarkModeToggle: React.FC<DarkModeToggleProps> = ({
+  colorMode,
+  toggleColorMode,
+  isSwitch = false,
+}) => {
   return (
-    <Button variant={"ghost"} onClick={toggleColorMode} bg={""}>
-      {colorMode === "light" ? (
-        <BsFillMoonStarsFill size={18} />
+    <>
+      {isSwitch ? (
+        <Flex justify="center" align="center">
+          <FormLabel htmlFor="dark-mode" my={0} fontSize={"sm"}>
+            Dark Mode?
+          </FormLabel>
+          <Switch onChange={toggleColorMode} id="dark-mode" />
+        </Flex>
       ) : (
-        <BsSunFill size={18} />
+        <Button variant={"ghost"} onClick={toggleColorMode} bg={""}>
+          {colorMode === "light" ? (
+            <BsFillMoonStarsFill size={18} />
+          ) : (
+            <BsSunFill size={18} />
+          )}
+        </Button>
       )}
-    </Button>
+    </>
   );
 };
 
