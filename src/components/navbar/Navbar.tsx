@@ -96,12 +96,13 @@ const DarkModeToggle: React.FC<DarkModeToggleProps> = ({
 
 const DesktopNav = () => {
   return (
-    <Flex display={{ base: "none", md: "flex" }} ml={10}>
+    <Flex display={{ base: "none", md: "flex" }} ml={{ md: 2, lg: 10 }}>
       <Stack direction={"row"} spacing={4}>
         {NAV_ITEMS.map((navItem) => (
           <Link
             key={navItem.label}
-            p={2}
+            py={2}
+            px={{ md: 1, lg: 2 }}
             href={navItem.href ?? "#"}
             _hover={{
               color: useColorModeValue("black", "gray.200"),
