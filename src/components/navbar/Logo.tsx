@@ -16,10 +16,10 @@ const Logo: React.FC<LogoProps> = ({ logoText }) => {
       as={Link}
       textAlign={useBreakpointValue({ base: "center", md: "left" })}
       fontFamily={"heading"}
-      fontSize={"xl"}
+      fontSize={"2xl"}
       fontWeight={"semibold"}
       color={useColorModeValue("gray.800", "white")}
-      p={2}
+      p={1}
       _hover={{
         textDecoration: "none",
       }}
