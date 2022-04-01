@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  ChakraProps,
   Collapse,
   ColorMode,
   Flex,
@@ -17,12 +18,23 @@ import { BsFillMoonStarsFill, BsSunFill } from "react-icons/bs";
 import Logo from "./Logo";
 import MenuToggle from "./MenuToggle";
 
-const Navbar = () => {
+interface NavbarProps {
+  sticky?: boolean;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
   const { onToggle, isOpen } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
 
+  const stickyStyle: ChakraProps = {
+    position: "fixed",
+    w: "100%",
+    zIndex: "200",
+    top: "0",
+  };
+
   return (
-    <Box>
+    <Box {...(sticky ? { ...stickyStyle } : {})}>
       <Flex
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
