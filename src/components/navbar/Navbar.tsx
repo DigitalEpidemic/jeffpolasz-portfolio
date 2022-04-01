@@ -66,7 +66,6 @@ interface DarkModeToggleProps {
   isSwitch?: boolean;
 }
 
-// TODO: Store dark mode state in localstorage
 const DarkModeToggle: React.FC<DarkModeToggleProps> = ({
   colorMode,
   toggleColorMode,
@@ -79,7 +78,11 @@ const DarkModeToggle: React.FC<DarkModeToggleProps> = ({
           <FormLabel htmlFor="dark-mode" my={0} fontSize={"sm"}>
             Dark Mode?
           </FormLabel>
-          <Switch onChange={toggleColorMode} id="dark-mode" />
+          <Switch
+            isChecked={colorMode === "dark"}
+            onChange={toggleColorMode}
+            id="dark-mode"
+          />
         </Flex>
       ) : (
         <Button variant={"ghost"} onClick={toggleColorMode} bg={""}>
