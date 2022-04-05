@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div className="App">
       <Navbar sticky />
-      <Container mt={20}>
+      <Container mt={20} mb={5}>
         <Text>Hello, World!</Text>
       </Container>
       <Footer />
