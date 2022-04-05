@@ -1,5 +1,6 @@
 import { Container, Text } from "@chakra-ui/react";
 import React from "react";
+import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 
 const App = () => {
@@ -9,6 +10,7 @@ const App = () => {
       <Container mt={20}>
         <Text>Hello, World!</Text>
       </Container>
+      <Footer />
     </div>
   );
 };
