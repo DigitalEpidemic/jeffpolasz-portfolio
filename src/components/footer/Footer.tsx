@@ -50,7 +50,11 @@ interface SocialIconProps {
   href: string;
 }
 
-const SocialIcon: React.FC<SocialIconProps> = ({ label, href, children }) => {
+export const SocialIcon: React.FC<SocialIconProps> = ({
+  label,
+  href,
+  children,
+}) => {
   return (
     <Link
       href={href}
