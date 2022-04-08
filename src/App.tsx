@@ -10,7 +10,7 @@ const App = () => {
       <Navbar sticky />
       <Hero
         backgroundImage="https://jeffpolasz.com/css/images/bg.svg"
-        profileImage=""
+        profileImage="https://i.pravatar.cc/200"
         firstName="Jeffrey"
         lastName="Polasz"
         tagline="I'm a Game and Web Developer"

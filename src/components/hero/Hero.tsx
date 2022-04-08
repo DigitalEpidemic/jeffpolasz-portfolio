@@ -34,7 +34,7 @@ const Hero: React.FC<HeroProps> = ({
       backgroundSize={"cover"}
     >
       <VStack w={"full"} justify={"center"}>
-        <ProfilePicture size="200px" />
+        <ProfilePicture profileImage={profileImage} size="200px" animate />
         <Flex>
           <Text
             color={useColorModeValue("gray.800", "white")}
@@ -64,6 +64,8 @@ const Hero: React.FC<HeroProps> = ({
 
 interface ProfilePictureProps {
   size: string;
+  profileImage: string;
+  animate?: boolean;
 }
 
 const pulseRing = keyframes`
@@ -79,33 +81,36 @@ const pulseRing = keyframes`
   }
 	`;
 
-const ProfilePicture: React.FC<ProfilePictureProps> = ({ size }) => {
+const ProfilePicture: React.FC<ProfilePictureProps> = ({
+  size,
+  profileImage,
+  animate: animation,
+}) => {
   return (
     <Box
       as="div"
       position="relative"
       w={size}
       h={size}
-      _before={{
-        content: "''",
-        position: "relative",
-        display: "block",
-        width: "300%",
-        height: "300%",
-        boxSizing: "border-box",
-        marginLeft: "-100%",
-        marginTop: "-100%",
-        borderRadius: "50%",
-        bgColor: useColorModeValue("white", "gray.800"),
-        animation: `2.25s ${pulseRing} cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite`,
-      }}
+      _before={
+        animation
+          ? {
+              content: "''",
+              position: "relative",
+              display: "block",
+              width: "250%",
+              height: "250%",
+              boxSizing: "border-box",
+              marginLeft: "-75%",
+              marginTop: "-75%",
+              borderRadius: "50%",
+              bgColor: useColorModeValue("white", "gray.800"),
+              animation: `5s ${pulseRing} cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite`,
+            }
+          : {}
+      }
     >
-      <Avatar
-        src="https://i.pravatar.cc/300"
-        size="full"
-        position="absolute"
-        top={0}
-      />
+      <Avatar src={profileImage} size="full" position="absolute" top={0} />
     </Box>
   );
 };
