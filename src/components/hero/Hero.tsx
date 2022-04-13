@@ -26,39 +26,65 @@ const Hero: React.FC<HeroProps> = ({
   tagline,
 }) => {
   return (
-    <Flex
-      w={"full"}
-      h={"100vh"}
-      backgroundImage={backgroundImage}
-      backgroundPosition={"center"}
-      backgroundSize={"cover"}
-    >
-      <VStack w={"full"} justify={"center"}>
-        <ProfilePicture profileImage={profileImage} size="200px" animate />
-        <Flex>
-          <Text
-            color={useColorModeValue("gray.800", "white")}
-            fontWeight={700}
-            lineHeight={1.2}
-            fontSize={useBreakpointValue({ base: "3xl", md: "4xl" })}
-            textTransform={"uppercase"}
-          >
-            {firstName}{" "}
+    <Box mt={15}>
+      <Flex
+        w={"full"}
+        h={"100vh"}
+        backgroundImage={backgroundImage}
+        backgroundPosition={"center"}
+        backgroundSize={"cover"}
+      >
+        <BackgroundImageOverlay backgroundColor={"black"} opacity={0.5} />
+        <VStack w={"full"} justify={"center"} zIndex={1}>
+          <ProfilePicture profileImage={profileImage} size="200px" animate />
+          <Flex>
             <Text
-              d={"inline"}
-              color={useColorModeValue("white", "gray.800")}
+              color={useColorModeValue("gray.800", "white")}
               fontWeight={700}
               lineHeight={1.2}
               fontSize={useBreakpointValue({ base: "3xl", md: "4xl" })}
               textTransform={"uppercase"}
             >
-              {lastName}
+              {firstName}{" "}
+              <Text
+                d={"inline"}
+                color={useColorModeValue("white", "gray.800")}
+                fontWeight={700}
+                lineHeight={1.2}
+                fontSize={useBreakpointValue({ base: "3xl", md: "4xl" })}
+                textTransform={"uppercase"}
+              >
+                {lastName}
+              </Text>
             </Text>
+          </Flex>
+          <Text color={"white"} mt={"0 !important"}>
+            {tagline}
           </Text>
-        </Flex>
-        <Text mt={"0 !important"}>{tagline}</Text>
-      </VStack>
-    </Flex>
+        </VStack>
+      </Flex>
+    </Box>
+  );
+};
+
+interface BackgroundImageOverlayProps {
+  backgroundColor?: string;
+  opacity?: number;
+}
+
+const BackgroundImageOverlay: React.FC<BackgroundImageOverlayProps> = ({
+  opacity = 0.45,
+  backgroundColor = "black",
+}) => {
+  return (
+    <Box
+      position={"absolute"}
+      zIndex={0}
+      w={"full"}
+      h={"100vh"}
+      backgroundColor={backgroundColor}
+      opacity={opacity}
+    />
   );
 };
 
@@ -90,6 +116,7 @@ const ProfilePicture: React.FC<ProfilePictureProps> = ({
     <Box
       as="div"
       position="relative"
+      zIndex={101}
       w={size}
       h={size}
       _before={
