@@ -28,6 +28,7 @@ const Hero: React.FC<HeroProps> = ({
   return (
     <Box mt={15}>
       <Flex
+        aria-label="hero-background-image"
         w={"full"}
         h={"100vh"}
         backgroundImage={backgroundImage}
@@ -48,6 +49,7 @@ const Hero: React.FC<HeroProps> = ({
               {firstName}{" "}
               <Text
                 d={"inline"}
+                as={"span"}
                 color={useColorModeValue("white", "gray.800")}
                 fontWeight={700}
                 lineHeight={1.2}
@@ -137,7 +139,13 @@ const ProfilePicture: React.FC<ProfilePictureProps> = ({
           : {}
       }
     >
-      <Avatar src={profileImage} size="full" position="absolute" top={0} />
+      <Avatar
+        name="profile-picture"
+        src={profileImage}
+        size="full"
+        position="absolute"
+        top={0}
+      />
     </Box>
   );
 };
