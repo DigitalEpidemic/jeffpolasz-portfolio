@@ -14,6 +14,7 @@ const App = () => {
         firstName="Jeffrey"
         lastName="Polasz"
         tagline="I'm a Game and Web Developer"
+        actionText="Learn More"
       />
       <Container mt={5} mb={5}>
         <Text>Hello, World!</Text>

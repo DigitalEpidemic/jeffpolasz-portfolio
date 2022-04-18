@@ -6,6 +6,7 @@ it("renders Hero text", () => {
   const firstName = "Jeff";
   const lastName = "Polasz";
   const tagline = "I am a tagline!";
+  const actionText = "Do Something Cool";
 
   render(
     <Hero
@@ -14,6 +15,7 @@ it("renders Hero text", () => {
       firstName={firstName}
       lastName={lastName}
       tagline={tagline}
+      actionText={actionText}
     />
   );
 
@@ -24,10 +26,28 @@ it("renders Hero text", () => {
     name: "profile-picture",
   });
   const backgroundImageElement = screen.getByLabelText("hero-background-image");
+  const actionButtonElement = screen.getByRole("button", { name: actionText });
 
   expect(firstNameElement).toBeInTheDocument();
   expect(lastNameElement).toBeInTheDocument();
   expect(taglineElement).toBeInTheDocument();
   expect(profileImageElement).toBeInTheDocument();
   expect(backgroundImageElement).toBeInTheDocument();
+  expect(actionButtonElement).toBeInTheDocument();
+});
+
+it("does not render Action Button when no prop is passed", () => {
+  render(
+    <Hero
+      backgroundImage=""
+      profileImage=""
+      firstName=""
+      lastName=""
+      tagline=""
+    />
+  );
+
+  const actionButtonElement = screen.queryByRole("button");
+
+  expect(actionButtonElement).not.toBeInTheDocument();
 });

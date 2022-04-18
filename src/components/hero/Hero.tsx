@@ -8,6 +8,7 @@ import {
   Avatar,
   Box,
   keyframes,
+  Button,
 } from "@chakra-ui/react";
 
 interface HeroProps {
@@ -16,6 +17,7 @@ interface HeroProps {
   firstName: string;
   lastName: string;
   tagline: string;
+  actionText?: string;
 }
 
 const Hero: React.FC<HeroProps> = ({
@@ -24,6 +26,7 @@ const Hero: React.FC<HeroProps> = ({
   firstName,
   lastName,
   tagline,
+  actionText,
 }) => {
   return (
     <Box mt={15}>
@@ -35,12 +38,12 @@ const Hero: React.FC<HeroProps> = ({
         backgroundPosition={"center"}
         backgroundSize={"cover"}
       >
-        <BackgroundImageOverlay backgroundColor={"black"} opacity={0.5} />
+        <BackgroundImageOverlay backgroundColor={"black"} opacity={0.6} />
         <VStack w={"full"} justify={"center"} zIndex={1}>
           <ProfilePicture profileImage={profileImage} size="200px" animate />
           <Flex>
             <Text
-              color={useColorModeValue("gray.800", "white")}
+              color={useColorModeValue("green.500", "green.200")}
               fontWeight={700}
               lineHeight={1.2}
               fontSize={useBreakpointValue({ base: "3xl", md: "4xl" })}
@@ -63,6 +66,11 @@ const Hero: React.FC<HeroProps> = ({
           <Text color={"white"} mt={"0 !important"}>
             {tagline}
           </Text>
+          {actionText && (
+            <Button background={useColorModeValue("white", "gray.800")}>
+              {actionText}
+            </Button>
+          )}
         </VStack>
       </Flex>
     </Box>
