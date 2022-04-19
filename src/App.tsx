@@ -3,6 +3,7 @@ import React from "react";
 import Footer from "./components/footer/Footer";
 import Hero from "./components/hero/Hero";
 import Navbar from "./components/navbar/Navbar";
+import Portfolio from "./components/portfolio/Portfolio";
 
 const App = () => {
   return (
@@ -16,9 +17,10 @@ const App = () => {
         tagline="I'm a Game and Web Developer"
         actionText="Learn More"
       />
-      <Container mt={5} mb={5}>
+      <Portfolio title="Game Projects" />
+      {/* <Container mt={5} mb={5}>
         <Text>Hello, World!</Text>
-      </Container>
+      </Container> */}
       <Footer />
     </div>
   );
