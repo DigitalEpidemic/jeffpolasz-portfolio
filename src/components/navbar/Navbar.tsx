@@ -28,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
 
   const stickyStyle: ChakraProps = {
     position: "fixed",
-    w: "100%",
+    w: "100vw",
     zIndex: "200",
     top: "0",
   };
