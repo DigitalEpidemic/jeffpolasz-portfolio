@@ -18,9 +18,9 @@ const App = () => {
         actionText="Learn More"
       />
       <Portfolio title="Game Projects" />
-      {/* <Container mt={5} mb={5}>
+      <Container mt={5} mb={5}>
         <Text>Hello, World!</Text>
-      </Container> */}
+      </Container>
       <Footer />
     </div>
   );
