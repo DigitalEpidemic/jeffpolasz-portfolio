@@ -8,3 +8,10 @@ it("renders Hello, World! text", () => {
   const linkElement = screen.getByText(/hello, world!/i);
   expect(linkElement).toBeInTheDocument();
 });
+
+it("hides horizontal scrollbar", () => {
+  render(<App />);
+
+  const app = screen.getByLabelText("App");
+  expect(getComputedStyle(app).overflowX).toBe("hidden");
+});

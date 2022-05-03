@@ -6,7 +6,7 @@ import Navbar from "./components/navbar/Navbar";
 
 const App = () => {
   return (
-    <Box overflowX={"hidden"}>
+    <Box aria-label="App" overflowX={"hidden"}>
       <Navbar sticky />
       <Hero
         backgroundImage="https://arlo-static-demo-dark.netlify.app/static/40a019176f85445c7910d98269bfbd0b/f3a00/bg-image-02.webp"
