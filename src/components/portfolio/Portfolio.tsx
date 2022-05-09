@@ -9,6 +9,8 @@ import {
   Link,
   ListItem,
   SimpleGrid,
+  Stack,
+  Tag,
   Text,
   UnorderedList,
   useBreakpointValue,
@@ -101,6 +103,24 @@ const Card: React.FC<CardProps> = ({
       />
       <Box p={5}>
         <Text>{title}</Text>
+        <Stack isInline align={"baseline"}>
+          <Tag
+            size={"sm"}
+            background={useColorModeValue("gray.600", "gray.800")}
+            color={useColorModeValue("gray.200", "gray.100")}
+          >
+            Unity
+          </Tag>
+          <Tag size={"sm"} background={"black"} color={"white"}>
+            UE4
+          </Tag>
+          <Tag size={"sm"} colorScheme={"green"}>
+            Android
+          </Tag>
+          <Tag size={"sm"} colorScheme={"blue"}>
+            iOS
+          </Tag>
+        </Stack>
         {!description && (
           <UnorderedList mb={5}>
             {feature1 && <ListItem>{feature1}</ListItem>}
