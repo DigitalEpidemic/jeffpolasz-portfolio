@@ -53,7 +53,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ title }) => {
           appStore={"boffum"}
         />
         <Card
-          title={"Perfect Knife"}
+          title={"Circle Avoider"}
           feature1={"happens?"}
           googlePlay="testing"
           gitHub={"allofthem"}
@@ -129,14 +129,14 @@ const Card: React.FC<CardProps> = ({
           </UnorderedList>
         )}
         {(!feature1 || !feature2 || !feature3) && description}
-        <Flex justifyContent={"space-around"}>
+        <Flex justifyContent={"center"}>
           {googlePlay && (
             <Link
               href={googlePlay}
               isExternal={true}
               _hover={{ textDecoration: "none" }}
             >
-              <Button>Google Play</Button>
+              <Button mx={1}>Google Play</Button>
             </Link>
           )}
           {appStore && (
@@ -145,7 +145,7 @@ const Card: React.FC<CardProps> = ({
               isExternal={true}
               _hover={{ textDecoration: "none" }}
             >
-              <Button>App Store</Button>
+              <Button mx={1}>App Store</Button>
             </Link>
           )}
           {gitHub && (
@@ -154,7 +154,7 @@ const Card: React.FC<CardProps> = ({
               isExternal={true}
               _hover={{ textDecoration: "none" }}
             >
-              <Button>GitHub</Button>
+              <Button mx={1}>GitHub</Button>
             </Link>
           )}
         </Flex>
