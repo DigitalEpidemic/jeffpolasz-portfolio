@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import {
   Box,
   Button,
@@ -17,20 +17,40 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
+// TODO: Use filterData as actual Card data
+const filterData: CardProps[] = [
+  {
+    filter: "unity",
+    title: "Unity Game",
+    description: "Test unity description",
+    gitHub: "test",
+  },
+  {
+    filter: "ue4",
+    title: "UE4 Game",
+    description: "Test UE4 description",
+    gitHub: "test2",
+  },
+];
+
 interface PortfolioProps {
   title: string;
 }
 
 const Portfolio: React.FC<PortfolioProps> = ({ title }) => {
+  const [filter, setFilter] = useState("unity");
+  const [cardData, setCardData] = useState(); // TODO: Render cards based on filter state
+
   return (
     <Container maxW={"1300px"}>
-      <Heading mt={5} textAlign={"center"} textTransform={"uppercase"}>
+      <Heading my={5} textAlign={"center"} textTransform={"uppercase"}>
         {title}
       </Heading>
+      <FilterButtons filters={["unity", "ue4"]} setFilter={setFilter} />
       <SimpleGrid
         columns={useBreakpointValue({ sm: 1, md: 2, lg: 3 })}
         spacing={10}
-        py={10}
+        py={5}
         mx={5}
         justifyItems={"center"}
       >
@@ -63,6 +83,41 @@ const Portfolio: React.FC<PortfolioProps> = ({ title }) => {
   );
 };
 
+interface FilterButtonsProps {
+  filters: string[];
+  setFilter: Dispatch<SetStateAction<string>>;
+}
+
+const FilterButtons: React.FC<FilterButtonsProps> = ({
+  filters,
+  setFilter,
+}) => {
+  const handleOnClick = (filter: React.SetStateAction<string>) => {
+    console.log(filter);
+
+    if (filter === "all") {
+      setFilter("");
+      return;
+    }
+
+    setFilter(filter);
+  };
+
+  const allFilter = ["all"];
+
+  return (
+    <Flex justifyContent={"center"}>
+      {allFilter.concat(filters).map((filter, index) => {
+        return (
+          <Button key={index} mx={1} onClick={() => handleOnClick(filter)}>
+            {filter}
+          </Button>
+        );
+      })}
+    </Flex>
+  );
+};
+
 interface CardProps {
   thumbnail?: string;
   title?: string;
@@ -73,6 +128,7 @@ interface CardProps {
   googlePlay?: string;
   appStore?: string;
   gitHub?: string;
+  filter?: string;
 }
 
 const Card: React.FC<CardProps> = ({
