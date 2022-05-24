@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { SetStateAction, useState } from "react";
 import {
   Box,
   Button,
@@ -17,7 +17,6 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-// TODO: Use portfolioData as actual Card data
 const portfolioData: CardProps[] = [
   {
     filter: ["unity"],
@@ -48,6 +47,7 @@ interface PortfolioProps {
   title: string;
 }
 
+// TODO: Animate hiding/showing cards
 const Portfolio: React.FC<PortfolioProps> = ({ title }) => {
   const [filter, setFilter] = useState(""); // TODO: show selected filter button UI
   const [cardData, setCardData] = useState(portfolioData);
@@ -164,6 +164,7 @@ interface CardProps {
   filter?: string[];
 }
 
+// TODO: Dynamically render Tags based on portfolioData's filter array
 const Card: React.FC<CardProps> = ({
   thumbnail,
   title,
