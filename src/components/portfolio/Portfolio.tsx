@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -17,19 +17,30 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-// TODO: Use filterData as actual Card data
-const filterData: CardProps[] = [
+// TODO: Use portfolioData as actual Card data
+const portfolioData: CardProps[] = [
   {
-    filter: "unity",
+    filter: ["unity"],
     title: "Unity Game",
-    description: "Test unity description",
+    thumbnail: "https://jeffpolasz.com/images/shinobi-jump-featuredimg.jpg",
+    feature1: "test123",
+    googlePlay:
+      "https://play.google.com/store/apps/details?id=com.adknown.shinobijump",
     gitHub: "test",
   },
   {
-    filter: "ue4",
+    filter: ["ue4"],
     title: "UE4 Game",
     description: "Test UE4 description",
     gitHub: "test2",
+  },
+  {
+    filter: ["unity"],
+    title: "Perfect Knife",
+    description: "what",
+    feature1: "happens?",
+    googlePlay: "testing",
+    appStore: "boffum",
   },
 ];
 
@@ -38,15 +49,26 @@ interface PortfolioProps {
 }
 
 const Portfolio: React.FC<PortfolioProps> = ({ title }) => {
-  const [filter, setFilter] = useState("unity");
-  const [cardData, setCardData] = useState(); // TODO: Render cards based on filter state
+  const [filter, setFilter] = useState(""); // TODO: show selected filter button UI
+  const [cardData, setCardData] = useState(portfolioData);
+
+  const handleFilteringData = (
+    filter: SetStateAction<string>,
+    cardData: CardProps[]
+  ) => {
+    setFilter(filter);
+    setCardData(cardData.length !== 0 ? cardData : portfolioData);
+  };
 
   return (
     <Container maxW={"1300px"}>
       <Heading my={5} textAlign={"center"} textTransform={"uppercase"}>
         {title}
       </Heading>
-      <FilterButtons filters={["unity", "ue4"]} setFilter={setFilter} />
+      <FilterButtons
+        filters={["unity", "ue4"]}
+        handleFilteringData={handleFilteringData}
+      />
       <SimpleGrid
         columns={useBreakpointValue({ sm: 1, md: 2, lg: 3 })}
         spacing={10}
@@ -54,7 +76,10 @@ const Portfolio: React.FC<PortfolioProps> = ({ title }) => {
         mx={5}
         justifyItems={"center"}
       >
-        <Card title={"Tappy Road"} description={"test"} appStore={"test"} />
+        {cardData.map((data) => (
+          <Card key={data.title} {...data} />
+        ))}
+        {/* <Card title={"Tappy Road"} description={"test"} appStore={"test"} />
         <Card
           title={"Shinobi Jump"}
           thumbnail={
@@ -77,7 +102,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ title }) => {
           feature1={"happens?"}
           googlePlay="testing"
           gitHub={"allofthem"}
-        />
+        /> */}
       </SimpleGrid>
     </Container>
   );
@@ -85,22 +110,22 @@ const Portfolio: React.FC<PortfolioProps> = ({ title }) => {
 
 interface FilterButtonsProps {
   filters: string[];
-  setFilter: Dispatch<SetStateAction<string>>;
+  handleFilteringData: (
+    filter: React.SetStateAction<string>,
+    cardData: CardProps[]
+  ) => void;
 }
 
 const FilterButtons: React.FC<FilterButtonsProps> = ({
   filters,
-  setFilter,
+  handleFilteringData,
 }) => {
   const handleOnClick = (filter: React.SetStateAction<string>) => {
-    console.log(filter);
+    const data = portfolioData.filter((cardProps) =>
+      cardProps.filter?.includes(filter.toString())
+    );
 
-    if (filter === "all") {
-      setFilter("");
-      return;
-    }
-
-    setFilter(filter);
+    handleFilteringData(filter, data);
   };
 
   const allFilter = ["all"];
@@ -128,7 +153,7 @@ interface CardProps {
   googlePlay?: string;
   appStore?: string;
   gitHub?: string;
-  filter?: string;
+  filter?: string[];
 }
 
 const Card: React.FC<CardProps> = ({
