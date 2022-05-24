@@ -67,6 +67,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ title }) => {
       </Heading>
       <FilterButtons
         filters={["unity", "ue4"]}
+        selectedFilter={filter}
         handleFilteringData={handleFilteringData}
       />
       <SimpleGrid
@@ -110,6 +111,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ title }) => {
 
 interface FilterButtonsProps {
   filters: string[];
+  selectedFilter: string;
   handleFilteringData: (
     filter: React.SetStateAction<string>,
     cardData: CardProps[]
@@ -118,6 +120,7 @@ interface FilterButtonsProps {
 
 const FilterButtons: React.FC<FilterButtonsProps> = ({
   filters,
+  selectedFilter,
   handleFilteringData,
 }) => {
   const handleOnClick = (filter: React.SetStateAction<string>) => {
@@ -134,7 +137,12 @@ const FilterButtons: React.FC<FilterButtonsProps> = ({
     <Flex justifyContent={"center"}>
       {allFilter.concat(filters).map((filter, index) => {
         return (
-          <Button key={index} mx={1} onClick={() => handleOnClick(filter)}>
+          <Button
+            variant={selectedFilter === filter ? "outline" : "solid"}
+            key={index}
+            mx={1}
+            onClick={() => handleOnClick(filter)}
+          >
             {filter}
           </Button>
         );
