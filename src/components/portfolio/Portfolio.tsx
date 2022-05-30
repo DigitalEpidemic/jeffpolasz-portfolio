@@ -17,47 +17,13 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-const portfolioData: CardProps[] = [
-  {
-    filter: ["unity", "android", "ios"],
-    title: "Shinobi Jump",
-    thumbnail: "https://jeffpolasz.com/images/shinobi-jump-featuredimg.jpg",
-    feature1: "Hand drawn UI and game art",
-    feature2: "Perfected using a dark colour palette",
-    feature3: "Developed & published in 10 days",
-    googlePlay:
-      "https://play.google.com/store/apps/details?id=com.adknown.shinobijump",
-    appStore: "https://apps.apple.com/ca/app/shinobi-jump/id1502583004",
-  },
-  {
-    filter: ["ue4"],
-    title: "UE4 Game",
-    description: "Test UE4 description",
-    gitHub: "test2",
-  },
-  {
-    filter: ["unity"],
-    title: "Perfect Knife",
-    description: "what",
-    feature1: "happens?",
-    googlePlay: "testing",
-    appStore: "boffum",
-  },
-  {
-    filter: ["unity", "ios"],
-    title: "Regular Knife",
-    feature1: "happens?",
-    googlePlay: "testing",
-    appStore: "boffum",
-  },
-];
-
 interface PortfolioProps {
   title: string;
+  portfolioData: CardProps[];
 }
 
 // TODO: Animate hiding/showing cards
-const Portfolio: React.FC<PortfolioProps> = ({ title }) => {
+const Portfolio: React.FC<PortfolioProps> = ({ title, portfolioData }) => {
   const [filter, setFilter] = useState("");
   const [cardData, setCardData] = useState(portfolioData);
 
@@ -78,6 +44,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ title }) => {
         filters={["unity", "ue4"]}
         selectedFilter={filter}
         handleFilteringData={handleFilteringData}
+        portfolioData={portfolioData}
       />
       <SimpleGrid
         columns={useBreakpointValue({ sm: 1, md: 2, lg: 3 })}
@@ -101,12 +68,14 @@ interface FilterButtonsProps {
     filter: React.SetStateAction<string>,
     cardData: CardProps[]
   ) => void;
+  portfolioData: CardProps[];
 }
 
 const FilterButtons: React.FC<FilterButtonsProps> = ({
   filters,
   selectedFilter,
   handleFilteringData,
+  portfolioData,
 }) => {
   const handleOnClick = (filter: React.SetStateAction<string>) => {
     const data = portfolioData.filter((cardProps) =>
@@ -136,9 +105,9 @@ const FilterButtons: React.FC<FilterButtonsProps> = ({
   );
 };
 
-interface CardProps {
+export interface CardProps {
+  title: string;
   thumbnail?: string;
-  title?: string;
   description?: string;
   feature1?: string;
   feature2?: string;

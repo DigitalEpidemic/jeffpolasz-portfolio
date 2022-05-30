@@ -4,6 +4,7 @@ import Footer from "./components/footer/Footer";
 import Hero from "./components/hero/Hero";
 import Navbar from "./components/navbar/Navbar";
 import Portfolio from "./components/portfolio/Portfolio";
+import { gameProjects } from "./data/gameProjects";
 
 const App = () => {
   return (
@@ -17,7 +18,7 @@ const App = () => {
         tagline="I'm a Game and Web Developer"
         actionText="Learn More"
       />
-      <Portfolio title="Game Projects" />
+      <Portfolio title="Game Projects" portfolioData={gameProjects} />
       <Container mt={5} mb={5}>
         <Text>Hello, World!</Text>
       </Container>
