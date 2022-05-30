@@ -19,13 +19,15 @@ import {
 
 const portfolioData: CardProps[] = [
   {
-    filter: ["unity"],
-    title: "Unity Game",
+    filter: ["unity", "android", "ios"],
+    title: "Shinobi Jump",
     thumbnail: "https://jeffpolasz.com/images/shinobi-jump-featuredimg.jpg",
-    feature1: "test123",
+    feature1: "Hand drawn UI and game art",
+    feature2: "Perfected using a dark colour palette",
+    feature3: "Developed & published in 10 days",
     googlePlay:
       "https://play.google.com/store/apps/details?id=com.adknown.shinobijump",
-    gitHub: "test",
+    appStore: "https://apps.apple.com/ca/app/shinobi-jump/id1502583004",
   },
   {
     filter: ["ue4"],
@@ -37,6 +39,13 @@ const portfolioData: CardProps[] = [
     filter: ["unity"],
     title: "Perfect Knife",
     description: "what",
+    feature1: "happens?",
+    googlePlay: "testing",
+    appStore: "boffum",
+  },
+  {
+    filter: ["unity", "ios"],
+    title: "Regular Knife",
     feature1: "happens?",
     googlePlay: "testing",
     appStore: "boffum",
@@ -80,30 +89,6 @@ const Portfolio: React.FC<PortfolioProps> = ({ title }) => {
         {cardData.map((data) => (
           <Card key={data.title} {...data} />
         ))}
-        {/* <Card title={"Tappy Road"} description={"test"} appStore={"test"} />
-        <Card
-          title={"Shinobi Jump"}
-          thumbnail={
-            "https://jeffpolasz.com/images/shinobi-jump-featuredimg.jpg"
-          }
-          feature1={"test123"}
-          googlePlay={
-            "https://play.google.com/store/apps/details?id=com.adknown.shinobijump"
-          }
-        />
-        <Card
-          title={"Perfect Knife"}
-          description={"what"}
-          feature1={"happens?"}
-          googlePlay="testing"
-          appStore={"boffum"}
-        />
-        <Card
-          title={"Circle Avoider"}
-          feature1={"happens?"}
-          googlePlay="testing"
-          gitHub={"allofthem"}
-        /> */}
       </SimpleGrid>
     </Container>
   );
@@ -164,7 +149,6 @@ interface CardProps {
   filter?: string[];
 }
 
-// TODO: Dynamically render Tags based on portfolioData's filter array
 const Card: React.FC<CardProps> = ({
   thumbnail,
   title,
@@ -175,6 +159,7 @@ const Card: React.FC<CardProps> = ({
   googlePlay,
   appStore,
   gitHub,
+  filter,
 }) => {
   const widthVariants = useBreakpointValue({ sm: "100%", xl: "390px" });
   return (
@@ -192,25 +177,36 @@ const Card: React.FC<CardProps> = ({
         src={thumbnail || "https://via.placeholder.com/400x200"}
       />
       <Box p={5}>
-        <Text>{title}</Text>
-        <Stack isInline align={"baseline"}>
-          <Tag
-            size={"sm"}
-            background={useColorModeValue("gray.600", "gray.800")}
-            color={useColorModeValue("gray.200", "gray.100")}
-          >
-            Unity
-          </Tag>
-          <Tag size={"sm"} background={"black"} color={"white"}>
-            UE4
-          </Tag>
-          <Tag size={"sm"} colorScheme={"green"}>
-            Android
-          </Tag>
-          <Tag size={"sm"} colorScheme={"blue"}>
-            iOS
-          </Tag>
+        <Text fontSize={"xl"}>{title}</Text>
+        <Stack isInline align={"baseline"} my={2}>
+          {filter?.includes("unity") && (
+            <Tag
+              size={"sm"}
+              background={useColorModeValue("gray.600", "gray.800")}
+              color={useColorModeValue("gray.200", "gray.100")}
+            >
+              Unity
+            </Tag>
+          )}
+          {filter?.includes("ue4") && (
+            <Tag size={"sm"} background={"black"} color={"white"}>
+              UE4
+            </Tag>
+          )}
+          {filter?.includes("android") && (
+            <Tag size={"sm"} colorScheme={"green"}>
+              Android
+            </Tag>
+          )}
+          {filter?.includes("ios") && (
+            <Tag size={"sm"} colorScheme={"blue"}>
+              iOS
+            </Tag>
+          )}
         </Stack>
+        {!description && (feature1 || feature2 || feature3) && (
+          <Text mb={1}>Highlights:</Text>
+        )}
         {!description && (
           <UnorderedList mb={5}>
             {feature1 && <ListItem>{feature1}</ListItem>}
