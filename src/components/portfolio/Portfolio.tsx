@@ -49,7 +49,7 @@ interface PortfolioProps {
 
 // TODO: Animate hiding/showing cards
 const Portfolio: React.FC<PortfolioProps> = ({ title }) => {
-  const [filter, setFilter] = useState(""); // TODO: show selected filter button UI
+  const [filter, setFilter] = useState("");
   const [cardData, setCardData] = useState(portfolioData);
 
   const handleFilteringData = (
