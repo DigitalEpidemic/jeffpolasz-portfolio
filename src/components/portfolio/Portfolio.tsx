@@ -22,7 +22,7 @@ interface PortfolioProps {
   portfolioData: CardProps[];
 }
 
-// TODO: Animate hiding/showing cards
+// TODO: Animate hiding/showing cards (Framer)
 const Portfolio: React.FC<PortfolioProps> = ({ title, portfolioData }) => {
   const [filter, setFilter] = useState("");
   const [cardData, setCardData] = useState(portfolioData);
