@@ -1,4 +1,4 @@
-import { CardProps } from "../components/portfolio/Portfolio";
+import { CardProps } from "../components/portfolio/Card";
 
 export const gameProjects: CardProps[] = [
   {

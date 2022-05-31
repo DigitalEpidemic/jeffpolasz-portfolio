@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import { CardProps } from "./Card";
-import Portfolio from "./Portfolio";
+import FilterButtons from "./FilterButton";
 
-it("renders Portfolio and mock data", () => {
+it("always renders all filter button", () => {
   const mockPortfolioData: CardProps[] = [
     {
       filter: ["unity", "android", "ios"],
@@ -18,12 +18,18 @@ it("renders Portfolio and mock data", () => {
     },
   ];
 
-  const title = "Game Stuff";
+  render(
+    <FilterButtons
+      filters={["unity", "ue4"]}
+      selectedFilter={""}
+      handleFilteringData={() => {
+        /** */
+      }}
+      portfolioData={mockPortfolioData}
+    />
+  );
 
-  render(<Portfolio title={title} portfolioData={mockPortfolioData} />);
+  const allButton = screen.getByRole("button", { name: "all" });
 
-  const portfolioTitle = screen.getByText(title);
-  expect(portfolioTitle).toBeInTheDocument();
-
-  expect(screen.getByText(mockPortfolioData[0].title)).toBeInTheDocument();
+  expect(allButton).toBeInTheDocument();
 });
