@@ -24,7 +24,7 @@ interface PortfolioProps {
 
 // TODO: Animate hiding/showing cards (Framer)
 const Portfolio: React.FC<PortfolioProps> = ({ title, portfolioData }) => {
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState("all");
   const [cardData, setCardData] = useState(portfolioData);
 
   const handleFilteringData = (
