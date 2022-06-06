@@ -39,6 +39,7 @@ const Card: React.FC<CardProps> = ({
   gitHub,
   filter,
 }) => {
+  // TODO: Create Tags for Web Projects. Possibly create helper/mapping?
   const widthVariants = useBreakpointValue({ sm: "100%", xl: "390px" });
   return (
     <Box
@@ -57,7 +58,7 @@ const Card: React.FC<CardProps> = ({
       <Box p={5}>
         <Text fontSize={"xl"}>{title}</Text>
         <Stack isInline align={"baseline"} my={2}>
-          {filter?.includes("unity") && (
+          {filter?.includes("Unity") && (
             <Tag
               size={"sm"}
               background={useColorModeValue("gray.600", "gray.800")}
@@ -66,17 +67,17 @@ const Card: React.FC<CardProps> = ({
               Unity
             </Tag>
           )}
-          {filter?.includes("ue4") && (
+          {filter?.includes("UE4") && (
             <Tag size={"sm"} background={"black"} color={"white"}>
               UE4
             </Tag>
           )}
-          {filter?.includes("android") && (
+          {filter?.includes("Android") && (
             <Tag size={"sm"} colorScheme={"green"}>
               Android
             </Tag>
           )}
-          {filter?.includes("ios") && (
+          {filter?.includes("iOS") && (
             <Tag size={"sm"} colorScheme={"blue"}>
               iOS
             </Tag>
