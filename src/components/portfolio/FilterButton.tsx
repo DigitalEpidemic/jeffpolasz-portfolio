@@ -26,7 +26,7 @@ const FilterButtons: React.FC<FilterButtonsProps> = ({
     handleFilteringData(filter, data);
   };
 
-  const allFilter = ["all"];
+  const allFilter = ["All"];
 
   return (
     <Flex justifyContent={"center"}>

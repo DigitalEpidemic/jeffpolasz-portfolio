@@ -20,7 +20,7 @@ const Portfolio: React.FC<PortfolioProps> = ({
   portfolioData,
   excludeFilters,
 }) => {
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState("All");
   const [cardData, setCardData] = useState<CardProps[]>(portfolioData);
 
   const handleFilteringData = (

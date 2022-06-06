@@ -2,7 +2,7 @@ import { CardProps } from "../components/portfolio/Card";
 
 export const gameProjects: CardProps[] = [
   {
-    filter: ["unity", "android", "ios"],
+    filter: ["Unity", "Android", "iOS"],
     title: "Shinobi Jump",
     thumbnail: "https://jeffpolasz.com/images/shinobi-jump-featuredimg.jpg",
     feature1: "Hand drawn UI and game art",
@@ -13,13 +13,13 @@ export const gameProjects: CardProps[] = [
     appStore: "https://apps.apple.com/ca/app/shinobi-jump/id1502583004",
   },
   {
-    filter: ["ue4"],
+    filter: ["UE4"],
     title: "UE4 Game",
     description: "Test UE4 description",
     gitHub: "test2",
   },
   {
-    filter: ["unity"],
+    filter: ["Unity"],
     title: "Perfect Knife",
     description: "what",
     feature1: "happens?",
@@ -27,7 +27,7 @@ export const gameProjects: CardProps[] = [
     appStore: "boffum",
   },
   {
-    filter: ["unity", "ios"],
+    filter: ["Unity", "iOS"],
     title: "Regular Knife",
     feature1: "happens?",
     googlePlay: "testing",
