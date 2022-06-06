@@ -30,7 +30,7 @@ describe("FilterButton", () => {
       />
     );
 
-    const allButton = screen.getByRole("button", { name: "all" });
+    const allButton = screen.getByRole("button", { name: "All" });
 
     expect(allButton).toBeInTheDocument();
   });
