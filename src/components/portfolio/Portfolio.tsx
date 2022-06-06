@@ -1,4 +1,4 @@
-import React, { SetStateAction, useState } from "react";
+import React, { SetStateAction, useMemo, useState } from "react";
 import {
   Container,
   Heading,
@@ -11,12 +11,17 @@ import Card, { CardProps } from "./Card";
 interface PortfolioProps {
   title: string;
   portfolioData: CardProps[];
+  excludeFilters?: string[];
 }
 
 // TODO: Animate hiding/showing cards (Framer)
-const Portfolio: React.FC<PortfolioProps> = ({ title, portfolioData }) => {
+const Portfolio: React.FC<PortfolioProps> = ({
+  title,
+  portfolioData,
+  excludeFilters,
+}) => {
   const [filter, setFilter] = useState("all");
-  const [cardData, setCardData] = useState(portfolioData);
+  const [cardData, setCardData] = useState<CardProps[]>(portfolioData);
 
   const handleFilteringData = (
     filter: SetStateAction<string>,
@@ -26,13 +31,25 @@ const Portfolio: React.FC<PortfolioProps> = ({ title, portfolioData }) => {
     setCardData(cardData.length !== 0 ? cardData : portfolioData);
   };
 
+  const uniqueFilterDataList = useMemo(() => {
+    const filterList = Array.from(
+      new Set(portfolioData.map((data) => data.filter).flat())
+    ) as string[];
+
+    const finalFilterList = filterList.filter(
+      (currentListOfFilters) => !excludeFilters?.includes(currentListOfFilters)
+    );
+
+    return finalFilterList;
+  }, [portfolioData, excludeFilters]);
+
   return (
     <Container maxW={"1300px"}>
       <Heading my={5} textAlign={"center"} textTransform={"uppercase"}>
         {title}
       </Heading>
       <FilterButtons
-        filters={["unity", "ue4"]}
+        filters={uniqueFilterDataList}
         selectedFilter={filter}
         handleFilteringData={handleFilteringData}
         portfolioData={portfolioData}
