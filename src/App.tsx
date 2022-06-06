@@ -22,7 +22,7 @@ const App = () => {
       <Portfolio
         title="Game Projects"
         portfolioData={gameProjects}
-        excludeFilters={["android", "ios"]}
+        excludeFilters={["Android", "iOS"]}
       />
       <Portfolio title="Web Projects" portfolioData={webProjects} />
       <Container mt={5} mb={5}>
