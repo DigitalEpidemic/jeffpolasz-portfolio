@@ -5,6 +5,7 @@ import Hero from "./components/hero/Hero";
 import Navbar from "./components/navbar/Navbar";
 import Portfolio from "./components/portfolio/Portfolio";
 import { gameProjects } from "./data/gameProjects";
+import { webProjects } from "./data/webProjects";
 
 const App = () => {
   return (
@@ -18,7 +19,12 @@ const App = () => {
         tagline="I'm a Game and Web Developer"
         actionText="Learn More"
       />
-      <Portfolio title="Game Projects" portfolioData={gameProjects} />
+      <Portfolio
+        title="Game Projects"
+        portfolioData={gameProjects}
+        excludeFilters={["android", "ios"]}
+      />
+      <Portfolio title="Web Projects" portfolioData={webProjects} />
       <Container mt={5} mb={5}>
         <Text>Hello, World!</Text>
       </Container>
