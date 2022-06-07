@@ -7,13 +7,12 @@ import {
   Link,
   ListItem,
   Stack,
-  Tag,
-  TagProps,
   Text,
   UnorderedList,
   useBreakpointValue,
   useColorModeValue,
 } from "@chakra-ui/react";
+import CardTag from "./CardTag";
 
 export interface CardProps {
   title: string;
@@ -130,31 +129,6 @@ const Card: React.FC<CardProps> = ({
         </Flex>
       </Box>
     </Box>
-  );
-};
-
-interface CardTagProps {
-  title: string;
-  colorScheme?: TagProps["colorScheme"];
-  background?: string;
-  color?: string;
-}
-
-const CardTag: React.FC<CardTagProps> = ({
-  title,
-  colorScheme,
-  background,
-  color,
-}) => {
-  return (
-    <Tag
-      size={"sm"}
-      colorScheme={colorScheme}
-      background={background}
-      color={color}
-    >
-      {title}
-    </Tag>
   );
 };
 
