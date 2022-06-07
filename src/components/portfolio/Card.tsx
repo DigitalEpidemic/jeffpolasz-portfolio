@@ -24,7 +24,7 @@ export interface CardProps {
   googlePlay?: string;
   appStore?: string;
   gitHub?: string;
-  filter?: string[];
+  filters?: string[];
 }
 
 const Card: React.FC<CardProps> = ({
@@ -37,9 +37,8 @@ const Card: React.FC<CardProps> = ({
   googlePlay,
   appStore,
   gitHub,
-  filter,
+  filters,
 }) => {
-  // TODO: Create Tags for Web Projects. Possibly create helper/mapping?
   const widthVariants = useBreakpointValue({ sm: "100%", xl: "390px" });
   return (
     <Box
@@ -58,32 +57,32 @@ const Card: React.FC<CardProps> = ({
       <Box p={5}>
         <Text fontSize={"xl"}>{title}</Text>
         <Stack isInline align={"baseline"} my={2}>
-          {filter?.includes("Unity") && (
+          {filters?.includes("Unity") && (
             <CardTag
               title={"Unity"}
               background={useColorModeValue("gray.600", "gray.800")}
               color={useColorModeValue("gray.200", "gray.100")}
             />
           )}
-          {filter?.includes("UE4") && (
+          {filters?.includes("UE4") && (
             <CardTag title={"UE4"} background={"black"} color={"white"} />
           )}
-          {filter?.includes("Android") && (
+          {filters?.includes("Android") && (
             <CardTag title={"Android"} colorScheme={"green"} />
           )}
-          {filter?.includes("iOS") && (
+          {filters?.includes("iOS") && (
             <CardTag title={"iOS"} colorScheme={"blue"} />
           )}
-          {filter?.includes("React Native") && (
+          {filters?.includes("React Native") && (
             <CardTag title={"React Native"} colorScheme={"cyan"} />
           )}
-          {filter?.includes("React") && (
+          {filters?.includes("React") && (
             <CardTag title={"React"} colorScheme={"blue"} />
           )}
-          {filter?.includes("Vue") && (
+          {filters?.includes("Vue") && (
             <CardTag title={"Vue"} colorScheme={"green"} />
           )}
-          {filter?.includes("BootStrap 4") && (
+          {filters?.includes("BootStrap 4") && (
             <CardTag title={"BootStrap 4"} colorScheme={"purple"} />
           )}
         </Stack>

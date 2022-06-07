@@ -6,7 +6,7 @@ describe("Card", () => {
   it("renders title on card", () => {
     const mockPortfolioData: CardProps[] = [
       {
-        filter: ["unity", "android", "ios"],
+        filters: ["unity", "android", "ios"],
         title: "Shinobi Jump",
         thumbnail: "https://jeffpolasz.com/images/shinobi-jump-featuredimg.jpg",
         feature1: "Hand drawn UI and game art",
@@ -28,7 +28,7 @@ describe("Card", () => {
   it("renders Highlights text when at least 1 feature is passed in", () => {
     const mockPortfolioData: CardProps[] = [
       {
-        filter: ["unity", "android", "ios"],
+        filters: ["unity", "android", "ios"],
         title: "Shinobi Jump",
         thumbnail: "https://jeffpolasz.com/images/shinobi-jump-featuredimg.jpg",
         feature1: "Hand drawn UI and game art",

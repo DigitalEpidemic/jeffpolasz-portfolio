@@ -2,7 +2,7 @@ import { CardProps } from "../components/portfolio/Card";
 
 export const webProjects: CardProps[] = [
   {
-    filter: ["React Native"],
+    filters: ["React Native"],
     title: "PowerCalc",
     thumbnail: "https://jeffpolasz.com/images/power-calc-img.jpg",
     feature1: "Hand drawn UI and game art",
@@ -11,13 +11,13 @@ export const webProjects: CardProps[] = [
     gitHub: "#",
   },
   {
-    filter: ["React"],
+    filters: ["React"],
     title: "React Site",
     description: "Test UE4 description",
     gitHub: "test2",
   },
   {
-    filter: ["Vue"],
+    filters: ["Vue"],
     title: "Vue Site",
     description: "what",
     feature1: "happens?",
@@ -25,7 +25,7 @@ export const webProjects: CardProps[] = [
     appStore: "boffum",
   },
   {
-    filter: ["BootStrap 4"],
+    filters: ["BootStrap 4"],
     title: "Bootstrap Game",
     feature1: "happens?",
     googlePlay: "testing",

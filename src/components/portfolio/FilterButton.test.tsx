@@ -7,7 +7,7 @@ describe("FilterButton", () => {
   it("always renders all filter button", () => {
     const mockPortfolioData: CardProps[] = [
       {
-        filter: ["unity", "android", "ios"],
+        filters: ["unity", "android", "ios"],
         title: "Shinobi Jump",
         thumbnail: "https://jeffpolasz.com/images/shinobi-jump-featuredimg.jpg",
         feature1: "Hand drawn UI and game art",

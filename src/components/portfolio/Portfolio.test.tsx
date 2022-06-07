@@ -6,7 +6,7 @@ import Portfolio from "./Portfolio";
 describe("Portfolio", () => {
   const mockPortfolioData: CardProps[] = [
     {
-      filter: ["Unity", "Android", "iOS", "Other"],
+      filters: ["Unity", "Android", "iOS", "Other"],
       title: "Shinobi Jump",
       thumbnail: "https://jeffpolasz.com/images/shinobi-jump-featuredimg.jpg",
       feature1: "Hand drawn UI and game art",

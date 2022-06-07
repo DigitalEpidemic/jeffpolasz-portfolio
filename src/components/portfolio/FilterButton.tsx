@@ -20,7 +20,7 @@ const FilterButtons: React.FC<FilterButtonsProps> = ({
 }) => {
   const handleOnClick = (filter: React.SetStateAction<string>) => {
     const data = portfolioData.filter((cardProps) =>
-      cardProps.filter?.includes(filter.toString())
+      cardProps.filters?.includes(filter.toString())
     );
 
     handleFilteringData(filter, data);
