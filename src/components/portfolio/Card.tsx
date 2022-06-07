@@ -8,6 +8,7 @@ import {
   ListItem,
   Stack,
   Tag,
+  TagProps,
   Text,
   UnorderedList,
   useBreakpointValue,
@@ -59,28 +60,32 @@ const Card: React.FC<CardProps> = ({
         <Text fontSize={"xl"}>{title}</Text>
         <Stack isInline align={"baseline"} my={2}>
           {filter?.includes("Unity") && (
-            <Tag
-              size={"sm"}
+            <CardTag
+              title={"Unity"}
               background={useColorModeValue("gray.600", "gray.800")}
               color={useColorModeValue("gray.200", "gray.100")}
-            >
-              Unity
-            </Tag>
+            />
           )}
           {filter?.includes("UE4") && (
-            <Tag size={"sm"} background={"black"} color={"white"}>
-              UE4
-            </Tag>
+            <CardTag title={"UE4"} background={"black"} color={"white"} />
           )}
           {filter?.includes("Android") && (
-            <Tag size={"sm"} colorScheme={"green"}>
-              Android
-            </Tag>
+            <CardTag title={"Android"} colorScheme={"green"} />
           )}
           {filter?.includes("iOS") && (
-            <Tag size={"sm"} colorScheme={"blue"}>
-              iOS
-            </Tag>
+            <CardTag title={"iOS"} colorScheme={"blue"} />
+          )}
+          {filter?.includes("React Native") && (
+            <CardTag title={"React Native"} colorScheme={"cyan"} />
+          )}
+          {filter?.includes("React") && (
+            <CardTag title={"React"} colorScheme={"blue"} />
+          )}
+          {filter?.includes("Vue") && (
+            <CardTag title={"Vue"} colorScheme={"green"} />
+          )}
+          {filter?.includes("BootStrap 4") && (
+            <CardTag title={"BootStrap 4"} colorScheme={"purple"} />
           )}
         </Stack>
         {!description && (feature1 || feature2 || feature3) && (
@@ -125,6 +130,31 @@ const Card: React.FC<CardProps> = ({
         </Flex>
       </Box>
     </Box>
+  );
+};
+
+interface CardTagProps {
+  title: string;
+  colorScheme?: TagProps["colorScheme"];
+  background?: string;
+  color?: string;
+}
+
+const CardTag: React.FC<CardTagProps> = ({
+  title,
+  colorScheme,
+  background,
+  color,
+}) => {
+  return (
+    <Tag
+      size={"sm"}
+      colorScheme={colorScheme}
+      background={background}
+      color={color}
+    >
+      {title}
+    </Tag>
   );
 };
 
