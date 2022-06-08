@@ -12,7 +12,7 @@ import {
   useBreakpointValue,
   useColorModeValue,
 } from "@chakra-ui/react";
-import CardTag from "./CardTag";
+import CardTag, { CardTagProps } from "./CardTag";
 
 export interface CardProps {
   title: string;
@@ -24,7 +24,7 @@ export interface CardProps {
   googlePlay?: string;
   appStore?: string;
   gitHub?: string;
-  filters?: string[];
+  filters?: CardTagProps[];
 }
 
 const Card: React.FC<CardProps> = ({
@@ -57,34 +57,9 @@ const Card: React.FC<CardProps> = ({
       <Box p={5}>
         <Text fontSize={"xl"}>{title}</Text>
         <Stack isInline align={"baseline"} my={2}>
-          {filters?.includes("Unity") && (
-            <CardTag
-              title={"Unity"}
-              background={useColorModeValue("gray.600", "gray.800")}
-              color={useColorModeValue("gray.200", "gray.100")}
-            />
-          )}
-          {filters?.includes("UE4") && (
-            <CardTag title={"UE4"} background={"black"} color={"white"} />
-          )}
-          {filters?.includes("Android") && (
-            <CardTag title={"Android"} colorScheme={"green"} />
-          )}
-          {filters?.includes("iOS") && (
-            <CardTag title={"iOS"} colorScheme={"blue"} />
-          )}
-          {filters?.includes("React Native") && (
-            <CardTag title={"React Native"} colorScheme={"cyan"} />
-          )}
-          {filters?.includes("React") && (
-            <CardTag title={"React"} colorScheme={"blue"} />
-          )}
-          {filters?.includes("Vue") && (
-            <CardTag title={"Vue"} colorScheme={"green"} />
-          )}
-          {filters?.includes("BootStrap 4") && (
-            <CardTag title={"BootStrap 4"} colorScheme={"purple"} />
-          )}
+          {filters?.map((filter) => (
+            <CardTag key={filter.title} {...filter} />
+          ))}
         </Stack>
         {!description && (feature1 || feature2 || feature3) && (
           <Text mb={1}>Highlights:</Text>

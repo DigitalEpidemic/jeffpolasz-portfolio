@@ -1,13 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import { CardProps } from "./Card";
+import { CardTagList } from "../../data/CardTagList";
 import FilterButtons from "./FilterButton";
 
 describe("FilterButton", () => {
   it("always renders all filter button", () => {
     const mockPortfolioData: CardProps[] = [
       {
-        filters: ["unity", "android", "ios"],
+        filters: [CardTagList.UNITY, CardTagList.ANDROID, CardTagList.IOS],
         title: "Shinobi Jump",
         thumbnail: "https://jeffpolasz.com/images/shinobi-jump-featuredimg.jpg",
         feature1: "Hand drawn UI and game art",

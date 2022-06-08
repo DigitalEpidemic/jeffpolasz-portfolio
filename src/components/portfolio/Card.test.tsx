@@ -1,12 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
+import { CardTagList } from "../../data/CardTagList";
 import Card, { CardProps } from "./Card";
 
 describe("Card", () => {
   it("renders title on card", () => {
     const mockPortfolioData: CardProps[] = [
       {
-        filters: ["unity", "android", "ios"],
+        filters: [CardTagList.UNITY, CardTagList.ANDROID, CardTagList.IOS],
         title: "Shinobi Jump",
         thumbnail: "https://jeffpolasz.com/images/shinobi-jump-featuredimg.jpg",
         feature1: "Hand drawn UI and game art",
@@ -28,7 +29,7 @@ describe("Card", () => {
   it("renders Highlights text when at least 1 feature is passed in", () => {
     const mockPortfolioData: CardProps[] = [
       {
-        filters: ["unity", "android", "ios"],
+        filters: [CardTagList.UNITY, CardTagList.ANDROID, CardTagList.IOS],
         title: "Shinobi Jump",
         thumbnail: "https://jeffpolasz.com/images/shinobi-jump-featuredimg.jpg",
         feature1: "Hand drawn UI and game art",

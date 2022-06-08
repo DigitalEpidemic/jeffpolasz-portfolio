@@ -1,8 +1,9 @@
 import { CardProps } from "../components/portfolio/Card";
+import { CardTagList } from "./CardTagList";
 
 export const gameProjects: CardProps[] = [
   {
-    filters: ["Unity", "Android", "iOS"],
+    filters: [CardTagList.UNITY, CardTagList.ANDROID, CardTagList.IOS],
     title: "Shinobi Jump",
     thumbnail: "https://jeffpolasz.com/images/shinobi-jump-featuredimg.jpg",
     feature1: "Hand drawn UI and game art",
@@ -13,13 +14,13 @@ export const gameProjects: CardProps[] = [
     appStore: "https://apps.apple.com/ca/app/shinobi-jump/id1502583004",
   },
   {
-    filters: ["UE4"],
+    filters: [CardTagList.UE4],
     title: "UE4 Game",
     description: "Test UE4 description",
     gitHub: "test2",
   },
   {
-    filters: ["Unity"],
+    filters: [CardTagList.UNITY],
     title: "Perfect Knife",
     description: "what",
     feature1: "happens?",
@@ -27,7 +28,7 @@ export const gameProjects: CardProps[] = [
     appStore: "boffum",
   },
   {
-    filters: ["Unity", "iOS"],
+    filters: [CardTagList.UNITY, CardTagList.IOS],
     title: "Regular Knife",
     feature1: "happens?",
     googlePlay: "testing",

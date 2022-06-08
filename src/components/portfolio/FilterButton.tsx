@@ -12,6 +12,7 @@ interface FilterButtonsProps {
   portfolioData: CardProps[];
 }
 
+// TODO: Resize on smaller devices
 const FilterButtons: React.FC<FilterButtonsProps> = ({
   filters,
   selectedFilter,
@@ -20,7 +21,7 @@ const FilterButtons: React.FC<FilterButtonsProps> = ({
 }) => {
   const handleOnClick = (filter: React.SetStateAction<string>) => {
     const data = portfolioData.filter((cardProps) =>
-      cardProps.filters?.includes(filter.toString())
+      cardProps.filters?.some((cardTagProps) => cardTagProps.title === filter)
     );
 
     handleFilteringData(filter, data);

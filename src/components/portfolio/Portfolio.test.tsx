@@ -1,12 +1,19 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
+import { CardTagList } from "../../data/CardTagList";
 import { CardProps } from "./Card";
+import { CardTagProps } from "./CardTag";
 import Portfolio from "./Portfolio";
 
 describe("Portfolio", () => {
+  const other: CardTagProps = {
+    title: "other",
+    colorScheme: "linkedin",
+  };
+
   const mockPortfolioData: CardProps[] = [
     {
-      filters: ["Unity", "Android", "iOS", "Other"],
+      filters: [CardTagList.UNITY, CardTagList.ANDROID, CardTagList.IOS, other],
       title: "Shinobi Jump",
       thumbnail: "https://jeffpolasz.com/images/shinobi-jump-featuredimg.jpg",
       feature1: "Hand drawn UI and game art",

@@ -33,7 +33,11 @@ const Portfolio: React.FC<PortfolioProps> = ({
 
   const uniqueFilterDataList = useMemo(() => {
     const filterList = Array.from(
-      new Set(portfolioData.map((data) => data.filters).flat())
+      new Set(
+        portfolioData
+          .map((data) => data.filters?.map((filter) => filter.title))
+          .flat()
+      )
     ) as string[];
 
     const finalFilterList = filterList.filter(
