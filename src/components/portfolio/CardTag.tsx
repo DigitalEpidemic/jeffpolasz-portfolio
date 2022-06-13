@@ -20,6 +20,7 @@ const CardTag: React.FC<CardTagProps> = ({
 }) => {
   return (
     <Tag
+      aria-label={title}
       size={"sm"}
       colorScheme={colorScheme}
       background={background}

@@ -7,7 +7,7 @@ import Portfolio from "./Portfolio";
 
 describe("Portfolio", () => {
   const other: CardTagProps = {
-    title: "other",
+    title: "Foobarbaz",
     colorScheme: "linkedin",
   };
 
@@ -35,8 +35,8 @@ describe("Portfolio", () => {
     expect(screen.getByText(mockPortfolioData[0].title)).toBeInTheDocument();
   });
 
-  it("does not render excluded filters", () => {
-    const excludeFilters = ["Other"];
+  it("does not render buttons for excluded filters", () => {
+    const excludeFilters = [other.title];
 
     render(
       <Portfolio
@@ -46,8 +46,24 @@ describe("Portfolio", () => {
       />
     );
 
-    const otherFilter = screen.queryByText(excludeFilters[0]);
+    const otherFilter = screen.queryByRole("button", { name: other.title });
 
     expect(otherFilter).not.toBeInTheDocument();
+  });
+
+  it("always renders Tags on Cards even when excluded", () => {
+    const excludeFilters = [other.title];
+
+    render(
+      <Portfolio
+        title={title}
+        portfolioData={mockPortfolioData}
+        excludeFilters={excludeFilters}
+      />
+    );
+
+    const otherFilter = screen.getByLabelText(other.title);
+
+    expect(otherFilter).toBeInTheDocument();
   });
 });
