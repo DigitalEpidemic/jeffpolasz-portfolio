@@ -10,3 +10,10 @@ describe("App", () => {
     expect(linkElement).toBeInTheDocument();
   });
 });
+
+it("hides horizontal scrollbar", () => {
+  render(<App />);
+
+  const app = screen.getByTestId("App");
+  expect(getComputedStyle(app).overflowX).toBe("hidden");
+});

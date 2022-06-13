@@ -28,13 +28,13 @@ const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
 
   const stickyStyle: ChakraProps = {
     position: "fixed",
-    w: "100%",
+    w: "100vw",
     zIndex: "200",
     top: "0",
   };
 
   return (
-    <Box {...(sticky ? { ...stickyStyle } : {})}>
+    <Box aria-label="Navigation Bar" {...(sticky ? { ...stickyStyle } : {})}>
       <Flex
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}

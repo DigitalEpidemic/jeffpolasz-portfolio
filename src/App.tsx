@@ -1,4 +1,4 @@
-import { Container, Text } from "@chakra-ui/react";
+import { Box, Container, Text } from "@chakra-ui/react";
 import React from "react";
 import Footer from "./components/footer/Footer";
 import Hero from "./components/hero/Hero";
@@ -9,7 +9,7 @@ import { webProjects } from "./data/webProjects";
 
 const App = () => {
   return (
-    <div className="App">
+    <Box data-testid="App" overflowX={"hidden"}>
       <Navbar sticky />
       <Hero
         backgroundImage="https://arlo-static-demo-dark.netlify.app/static/40a019176f85445c7910d98269bfbd0b/f3a00/bg-image-02.webp"
@@ -29,7 +29,7 @@ const App = () => {
         <Text>Hello, World!</Text>
       </Container>
       <Footer />
-    </div>
+    </Box>
   );
 };
 
