@@ -12,6 +12,6 @@ it("renders Hello, World! text", () => {
 it("hides horizontal scrollbar", () => {
   render(<App />);
 
-  const app = screen.getByLabelText("App");
+  const app = screen.getByTestId("App");
   expect(getComputedStyle(app).overflowX).toBe("hidden");
 });

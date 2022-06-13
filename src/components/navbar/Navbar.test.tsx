@@ -7,7 +7,7 @@ it("renders Navbar at 100vw width", () => {
   render(<Navbar sticky />);
 
   const menuButton = screen.getByRole("button", { name: "Toggle Navigation" });
-  const navbar = screen.getByLabelText("navbar");
+  const navbar = screen.getByLabelText("Navigation Bar");
   userEvent.click(menuButton);
 
   expect(getComputedStyle(navbar).width).toBe("100vw");

@@ -34,7 +34,7 @@ const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
   };
 
   return (
-    <Box aria-label="navbar" {...(sticky ? { ...stickyStyle } : {})}>
+    <Box aria-label="Navigation Bar" {...(sticky ? { ...stickyStyle } : {})}>
       <Flex
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
