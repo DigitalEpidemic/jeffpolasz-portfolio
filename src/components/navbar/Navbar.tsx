@@ -1,20 +1,16 @@
 import {
   Box,
-  Button,
   ChakraProps,
   Collapse,
-  ColorMode,
   Flex,
-  FormLabel,
   Link,
   Stack,
-  Switch,
   Text,
   useColorMode,
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import { BsFillMoonStarsFill, BsSunFill } from "react-icons/bs";
+import DarkModeToggle from "./DarkModeToggle";
 import Logo from "./Logo";
 import MenuToggle from "./MenuToggle";
 
@@ -28,13 +24,13 @@ const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
 
   const stickyStyle: ChakraProps = {
     position: "fixed",
-    w: "100%",
+    w: "100vw",
     zIndex: "200",
     top: "0",
   };
 
   return (
-    <Box {...(sticky ? { ...stickyStyle } : {})}>
+    <Box aria-label="Navigation Bar" {...(sticky ? { ...stickyStyle } : {})}>
       <Flex
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
@@ -69,43 +65,6 @@ const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
         <MobileNavDropdown />
       </Collapse>
     </Box>
-  );
-};
-
-interface DarkModeToggleProps {
-  colorMode: ColorMode;
-  toggleColorMode: () => void;
-  isSwitch?: boolean;
-}
-
-const DarkModeToggle: React.FC<DarkModeToggleProps> = ({
-  colorMode,
-  toggleColorMode,
-  isSwitch = false,
-}) => {
-  return (
-    <>
-      {isSwitch ? (
-        <Flex justify="center" align="center">
-          <FormLabel htmlFor="dark-mode" my={0} fontSize={"sm"}>
-            Dark Mode?
-          </FormLabel>
-          <Switch
-            isChecked={colorMode === "dark"}
-            onChange={toggleColorMode}
-            id="dark-mode"
-          />
-        </Flex>
-      ) : (
-        <Button variant={"ghost"} onClick={toggleColorMode} bg={""}>
-          {colorMode === "light" ? (
-            <BsFillMoonStarsFill size={18} />
-          ) : (
-            <BsSunFill size={18} />
-          )}
-        </Button>
-      )}
-    </>
   );
 };
 
