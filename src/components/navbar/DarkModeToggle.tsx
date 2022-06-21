@@ -18,7 +18,12 @@ const DarkModeToggle: React.FC<DarkModeToggleProps> = ({
   return (
     <>
       {isSwitch ? (
-        <Flex justify="center" align="center" pr={1}>
+        <Flex
+          aria-label="Dark Mode Toggle"
+          justify="center"
+          align="center"
+          pr={1}
+        >
           <Switch
             sx={{
               ".chakra-switch__thumb": {
