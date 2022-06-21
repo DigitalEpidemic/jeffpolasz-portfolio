@@ -40,7 +40,8 @@ const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
         py={2}
-        px={4}
+        pl={3}
+        pr={5}
         borderBottom={1}
         borderStyle={"solid"}
         borderColor={useColorModeValue("gray.200", "gray.700")}

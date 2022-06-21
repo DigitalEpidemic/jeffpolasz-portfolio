@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/react";
 import FilterButtons from "./FilterButton";
 import Card, { CardProps } from "./Card";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface PortfolioProps {
   title: string;
@@ -14,7 +15,6 @@ interface PortfolioProps {
   excludeFilters?: string[];
 }
 
-// TODO: Animate hiding/showing cards (Framer)
 const Portfolio: React.FC<PortfolioProps> = ({
   title,
   portfolioData,
@@ -48,7 +48,7 @@ const Portfolio: React.FC<PortfolioProps> = ({
   }, [portfolioData, excludeFilters]);
 
   return (
-    <Container maxW={"1300px"}>
+    <Container minH={"580px"} maxW={"1300px"}>
       <Heading my={5} textAlign={"center"} textTransform={"uppercase"}>
         {title}
       </Heading>
@@ -58,17 +58,27 @@ const Portfolio: React.FC<PortfolioProps> = ({
         handleFilteringData={handleFilteringData}
         portfolioData={portfolioData}
       />
-      <SimpleGrid
-        columns={useBreakpointValue({ sm: 1, md: 2, lg: 3 })}
-        spacing={10}
-        py={5}
-        mx={5}
-        justifyItems={"center"}
-      >
-        {cardData.map((data) => (
-          <Card key={data.title} {...data} />
-        ))}
-      </SimpleGrid>
+      <AnimatePresence exitBeforeEnter>
+        <SimpleGrid
+          columns={useBreakpointValue({ sm: 1, md: 2, lg: 3 })}
+          spacing={10}
+          py={5}
+          mx={5}
+          justifyItems={"center"}
+        >
+          {cardData.map((data) => (
+            <motion.div
+              key={data.title}
+              layout
+              initial={{ x: screen.width, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -screen.width, opacity: 0 }}
+            >
+              <Card {...data} />
+            </motion.div>
+          ))}
+        </SimpleGrid>
+      </AnimatePresence>
     </Container>
   );
 };
