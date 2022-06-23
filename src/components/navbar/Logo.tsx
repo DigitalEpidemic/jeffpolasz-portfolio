@@ -5,6 +5,7 @@ import {
   useBreakpointValue,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { animateScroll } from "react-scroll";
 
 interface LogoProps {
   logoText: string;
@@ -14,6 +15,9 @@ const Logo: React.FC<LogoProps> = ({ logoText }) => {
   return (
     <Text
       as={Link}
+      onClick={() => {
+        animateScroll.scrollToTop({ duration: 400, smooth: "easeInOutQuint" });
+      }}
       textAlign={useBreakpointValue({ base: "center", md: "left" })}
       fontFamily={"heading"}
       fontSize={"2xl"}

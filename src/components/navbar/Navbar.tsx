@@ -10,6 +10,8 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
+import { Link as ScrollLink } from "react-scroll";
+import { NAV_ITEMS } from "../../data/navItems";
 import DarkModeToggle from "./DarkModeToggle";
 import Logo from "./Logo";
 import MenuToggle from "./MenuToggle";
@@ -74,10 +76,15 @@ const DesktopNav = () => {
       <Stack direction={"row"} spacing={4}>
         {NAV_ITEMS.map((navItem) => (
           <Link
+            as={ScrollLink}
             key={navItem.label}
+            to={navItem.label}
+            spy={true}
+            duration={400}
+            smooth={"easeInOutQuint"}
+            offset={-61}
             py={2}
             px={{ md: 1, lg: 2 }}
-            href={navItem.href ?? "#"}
             _hover={{
               color: useColorModeValue("black", "gray.200"),
               textDecoration: "none",
@@ -115,8 +122,12 @@ const MobileNavItem: React.FC<NavItemProps> = ({ label, children, href }) => {
         px={6}
         py={3}
         mt={-2}
-        as={Link}
-        href={href ?? "#"}
+        as={ScrollLink}
+        to={label}
+        spy={true}
+        duration={400}
+        smooth={"easeInOutQuint"}
+        offset={-61}
         justify={"space-between"}
         align={"center"}
         _hover={{
@@ -135,30 +146,11 @@ const MobileNavItem: React.FC<NavItemProps> = ({ label, children, href }) => {
   );
 };
 
-interface NavItemProps {
+export interface NavItemProps {
   label: string;
   subLabel?: string;
   children?: Array<NavItemProps>;
-  href?: string;
+  href: string;
 }
-
-const NAV_ITEMS: Array<NavItemProps> = [
-  {
-    label: "Game Projects",
-    href: "#",
-  },
-  {
-    label: "Web Projects",
-    href: "#",
-  },
-  {
-    label: "Resume",
-    href: "#",
-  },
-  {
-    label: "Contact Me",
-    href: "#",
-  },
-];
 
 export default Navbar;
