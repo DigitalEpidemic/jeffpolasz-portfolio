@@ -30,13 +30,14 @@ const FilterButtons: React.FC<FilterButtonsProps> = ({
   const allFilter = ["All"];
 
   return (
-    <Flex justifyContent={"center"}>
+    <Flex justifyContent={"center"} flexWrap={"wrap"}>
       {allFilter.concat(filters).map((filter, index) => {
         return (
           <Button
             variant={selectedFilter === filter ? "outline" : "solid"}
             key={index}
             mx={1}
+            mb={2}
             onClick={() => handleOnClick(filter)}
           >
             {filter}
