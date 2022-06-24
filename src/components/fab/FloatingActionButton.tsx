@@ -43,11 +43,9 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
   const variants = {
     visible: {
       opacity: 1,
-      display: "inline-flex",
     },
     hidden: {
       opacity: 0,
-      applyAtEnd: { display: "none" },
     },
   };
 
