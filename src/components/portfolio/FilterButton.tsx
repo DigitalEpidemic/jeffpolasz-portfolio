@@ -12,7 +12,6 @@ interface FilterButtonsProps {
   portfolioData: CardProps[];
 }
 
-// TODO: Resize on smaller devices
 const FilterButtons: React.FC<FilterButtonsProps> = ({
   filters,
   selectedFilter,
