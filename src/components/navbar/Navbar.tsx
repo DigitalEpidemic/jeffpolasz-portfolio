@@ -8,10 +8,10 @@ import {
   Text,
   useColorMode,
   useColorModeValue,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { Link as ScrollLink } from "react-scroll";
 import { NAV_ITEMS } from "../../data/navItems";
+import { useNavbar } from "../../providers/NavbarProvider";
 import DarkModeToggle from "./DarkModeToggle";
 import Logo from "./Logo";
 import MenuToggle from "./MenuToggle";
@@ -21,7 +21,7 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
-  const { onToggle, isOpen, onClose } = useDisclosure();
+  const { onToggle, isOpen } = useNavbar();
   const { colorMode, toggleColorMode } = useColorMode();
 
   const stickyStyle: ChakraProps = {
@@ -64,7 +64,7 @@ const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNavDropdown onClose={onClose} />
+        <MobileNavDropdown />
       </Collapse>
     </Box>
   );
@@ -98,11 +98,7 @@ const DesktopNav = () => {
   );
 };
 
-interface MobileNavDropdownProps {
-  onClose: () => void;
-}
-
-const MobileNavDropdown: React.FC<MobileNavDropdownProps> = ({ onClose }) => {
+const MobileNavDropdown = () => {
   return (
     <Stack
       bg={useColorModeValue("white", "gray.800")}
@@ -111,18 +107,14 @@ const MobileNavDropdown: React.FC<MobileNavDropdownProps> = ({ onClose }) => {
       display={{ md: "none" }}
     >
       {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem onClose={onClose} key={navItem.label} {...navItem} />
+        <MobileNavItem key={navItem.label} {...navItem} />
       ))}
     </Stack>
   );
 };
 
-const MobileNavItem: React.FC<NavItemProps> = ({
-  label,
-  children,
-  href,
-  onClose,
-}) => {
+const MobileNavItem: React.FC<NavItemProps> = ({ label, children, href }) => {
+  const { onClose } = useNavbar();
   // TODO: Close the dropdown when the user clicks outside of it
   return (
     <Stack spacing={4}>
@@ -160,7 +152,6 @@ export interface NavItemProps {
   subLabel?: string;
   children?: Array<NavItemProps>;
   href: string;
-  onClose?: () => void;
 }
 
 export default Navbar;
