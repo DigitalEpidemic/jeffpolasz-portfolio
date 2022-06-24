@@ -115,7 +115,7 @@ const MobileNavDropdown = () => {
 
 const MobileNavItem: React.FC<NavItemProps> = ({ label, children, href }) => {
   const { onClose } = useNavbar();
-  // TODO: Close the dropdown when the user clicks outside of it
+
   return (
     <Stack spacing={4}>
       <Flex
