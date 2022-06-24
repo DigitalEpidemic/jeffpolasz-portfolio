@@ -80,6 +80,7 @@ const DesktopNav = () => {
             key={navItem.label}
             to={navItem.label}
             spy={true}
+            ignoreCancelEvents
             duration={400}
             smooth={"easeInOutQuint"}
             offset={-61}

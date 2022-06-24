@@ -14,7 +14,11 @@ import { useNavbar } from "./providers/NavbarProvider";
 const App = () => {
   const { onClose } = useNavbar();
   const scrollToTop = () => {
-    animateScroll.scrollToTop({ duration: 400, smooth: "easeInOutQuint" });
+    animateScroll.scrollToTop({
+      duration: 400,
+      smooth: "easeInOutQuint",
+      ignoreCancelEvents: true,
+    });
   };
 
   return (

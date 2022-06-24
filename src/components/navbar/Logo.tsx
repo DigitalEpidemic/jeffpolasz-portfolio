@@ -16,7 +16,11 @@ const Logo: React.FC<LogoProps> = ({ logoText }) => {
   const { onClose } = useNavbar();
 
   const handleClick = () => {
-    animateScroll.scrollToTop({ duration: 400, smooth: "easeInOutQuint" });
+    animateScroll.scrollToTop({
+      duration: 400,
+      smooth: "easeInOutQuint",
+      ignoreCancelEvents: true,
+    });
     onClose();
   };
 
