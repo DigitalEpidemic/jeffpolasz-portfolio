@@ -62,7 +62,7 @@ const Portfolio: React.FC<PortfolioProps> = ({
         <SimpleGrid
           columns={useBreakpointValue({ sm: 1, md: 2, lg: 3 })}
           spacing={10}
-          py={5}
+          py={3}
           mx={5}
           justifyItems={"center"}
         >
