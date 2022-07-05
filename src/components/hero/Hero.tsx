@@ -66,8 +66,10 @@ const Hero: React.FC<HeroProps> = ({
           <Text color={"white"} mt={"0 !important"}>
             {tagline}
           </Text>
+          {/* TODO: Create colorSchemes of Black and White to remove needing to manually apply styles */}
           {actionText && (
             <Button background={useColorModeValue("white", "gray.800")}>
+              {/* TODO: Scroll to About Page onClick */}
               {actionText}
             </Button>
           )}

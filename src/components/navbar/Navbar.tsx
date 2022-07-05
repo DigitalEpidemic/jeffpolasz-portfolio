@@ -8,8 +8,10 @@ import {
   Text,
   useColorMode,
   useColorModeValue,
-  useDisclosure,
 } from "@chakra-ui/react";
+import { Link as ScrollLink } from "react-scroll";
+import { NAV_ITEMS } from "../../data/navItems";
+import { useNavbar } from "../../providers/NavbarProvider";
 import DarkModeToggle from "./DarkModeToggle";
 import Logo from "./Logo";
 import MenuToggle from "./MenuToggle";
@@ -19,7 +21,7 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
-  const { onToggle, isOpen } = useDisclosure();
+  const { onToggle, isOpen } = useNavbar();
   const { colorMode, toggleColorMode } = useColorMode();
 
   const stickyStyle: ChakraProps = {
@@ -74,10 +76,16 @@ const DesktopNav = () => {
       <Stack direction={"row"} spacing={4}>
         {NAV_ITEMS.map((navItem) => (
           <Link
+            as={ScrollLink}
             key={navItem.label}
+            to={navItem.label}
+            spy={true}
+            ignoreCancelEvents
+            duration={400}
+            smooth={"easeInOutQuint"}
+            offset={-61}
             py={2}
             px={{ md: 1, lg: 2 }}
-            href={navItem.href ?? "#"}
             _hover={{
               color: useColorModeValue("black", "gray.200"),
               textDecoration: "none",
@@ -107,18 +115,23 @@ const MobileNavDropdown = () => {
 };
 
 const MobileNavItem: React.FC<NavItemProps> = ({ label, children, href }) => {
-  const { onToggle } = useDisclosure();
+  const { onClose } = useNavbar();
 
   return (
-    <Stack spacing={4} onClick={children && onToggle}>
+    <Stack spacing={4}>
       <Flex
         px={6}
         py={3}
         mt={-2}
-        as={Link}
-        href={href ?? "#"}
+        as={ScrollLink}
+        to={label}
+        spy={true}
+        duration={400}
+        smooth={"easeInOutQuint"}
+        offset={-61}
         justify={"space-between"}
         align={"center"}
+        onClick={onClose}
         _hover={{
           background: useColorModeValue("gray.200", "gray.700"),
           textDecoration: "none",
@@ -135,30 +148,11 @@ const MobileNavItem: React.FC<NavItemProps> = ({ label, children, href }) => {
   );
 };
 
-interface NavItemProps {
+export interface NavItemProps {
   label: string;
   subLabel?: string;
   children?: Array<NavItemProps>;
-  href?: string;
+  href: string;
 }
-
-const NAV_ITEMS: Array<NavItemProps> = [
-  {
-    label: "Game Projects",
-    href: "#",
-  },
-  {
-    label: "Web Projects",
-    href: "#",
-  },
-  {
-    label: "Resume",
-    href: "#",
-  },
-  {
-    label: "Contact Me",
-    href: "#",
-  },
-];
 
 export default Navbar;

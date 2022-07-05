@@ -5,15 +5,29 @@ import {
   useBreakpointValue,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { animateScroll } from "react-scroll";
+import { useNavbar } from "../../providers/NavbarProvider";
 
 interface LogoProps {
   logoText: string;
 }
 
 const Logo: React.FC<LogoProps> = ({ logoText }) => {
+  const { onClose } = useNavbar();
+
+  const handleClick = () => {
+    animateScroll.scrollToTop({
+      duration: 400,
+      smooth: "easeInOutQuint",
+      ignoreCancelEvents: true,
+    });
+    onClose();
+  };
+
   return (
     <Text
       as={Link}
+      onClick={handleClick}
       textAlign={useBreakpointValue({ base: "center", md: "left" })}
       fontFamily={"heading"}
       fontSize={"2xl"}
