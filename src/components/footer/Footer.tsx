@@ -13,6 +13,7 @@ import { BsEnvelopeFill, BsGithub, BsLinkedin } from "react-icons/bs";
 const Footer = () => {
   return (
     <Box
+      id={"Contact Me"} // TODO Extract
       bg={useColorModeValue("gray.50", "gray.900")}
       color={useColorModeValue("gray.700", "gray.200")}
     >
