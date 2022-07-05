@@ -27,11 +27,11 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
   }, []);
 
   const handleScroll = () => {
-    if (window.pageYOffset > 0) {
+    if (window.scrollY > 0) {
       setIsVisible(true);
     } else {
-      setIsVisible(false);
       setIsDisabled(false);
+      setIsVisible(false);
     }
   };
 
@@ -42,6 +42,13 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
       if (hideAfterClick) {
         setIsVisible(false);
       }
+    }
+  };
+
+  const handleOnComplete = () => {
+    if (window.scrollY > 0 && hideAfterClick) {
+      setIsVisible(true);
+      setIsDisabled(false);
     }
   };
 
@@ -60,6 +67,7 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
       animate={isVisible ? "visible" : "hidden"}
       variants={variants}
       transition={{ duration: 0.4 }}
+      onAnimationComplete={handleOnComplete}
     >
       <IconButton
         disabled={isDisabled}
