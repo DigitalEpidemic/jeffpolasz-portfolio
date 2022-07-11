@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Box,
   ChakraProps,
@@ -9,7 +10,7 @@ import {
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { Link as ScrollLink } from "react-scroll";
+import { Link as ScrollLink, Events } from "react-scroll";
 import { NAV_ITEMS } from "../../data/navItems";
 import { useNavbar } from "../../providers/NavbarProvider";
 import DarkModeToggle from "./DarkModeToggle";
@@ -23,6 +24,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
   const { onToggle, isOpen } = useNavbar();
   const { colorMode, toggleColorMode } = useColorMode();
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const stickyStyle: ChakraProps = {
     position: "fixed",
@@ -30,6 +32,20 @@ const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
     zIndex: "200",
     top: "0",
   };
+
+  useEffect(() => {
+    Events.scrollEvent.register("begin", () => {
+      setIsAnimating(true);
+    });
+    Events.scrollEvent.register("end", () => {
+      setIsAnimating(false);
+    });
+
+    return () => {
+      Events.scrollEvent.remove("begin");
+      Events.scrollEvent.remove("end");
+    };
+  }, []);
 
   return (
     <Box aria-label="Navigation Bar" {...(sticky ? { ...stickyStyle } : {})}>
@@ -50,7 +66,7 @@ const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
           justify={{ base: "start", md: "start" }}
         >
           <Logo logoText="Jeffrey Polasz" />
-          <DesktopNav />
+          <DesktopNav isAnimating={isAnimating} />
         </Flex>
 
         <Stack direction={"row"} spacing={7}>
@@ -70,7 +86,11 @@ const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
   );
 };
 
-const DesktopNav = () => {
+interface DesktopNavProps {
+  isAnimating: boolean;
+}
+
+const DesktopNav: React.FC<DesktopNavProps> = ({ isAnimating }) => {
   return (
     <Flex display={{ base: "none", md: "flex" }} ml={{ md: 2, lg: 10 }}>
       <Stack direction={"row"} spacing={4}>
@@ -84,6 +104,7 @@ const DesktopNav = () => {
             duration={400}
             smooth={"easeInOutQuint"}
             offset={-61}
+            style={isAnimating ? { pointerEvents: "none" } : {}}
             py={2}
             px={{ md: 1, lg: 2 }}
             _hover={{
