@@ -46,11 +46,11 @@ export const NavbarProvider: React.FC = ({ children }) => {
       Events.scrollEvent.remove("begin");
       Events.scrollEvent.remove("end");
     };
-  }, [state]);
+  }, []);
 
   const value = useMemo(
     () => ({ ...state, ...disclosureState }),
-    [disclosureState]
+    [state, disclosureState]
   );
 
   return (
