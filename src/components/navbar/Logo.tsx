@@ -14,6 +14,7 @@ interface LogoProps {
 
 const Logo: React.FC<LogoProps> = ({ logoText }) => {
   const { onClose } = useNavbar();
+  const { isAnimating } = useNavbar();
 
   const handleClick = () => {
     animateScroll.scrollToTop({
@@ -34,6 +35,7 @@ const Logo: React.FC<LogoProps> = ({ logoText }) => {
       fontWeight={"semibold"}
       color={useColorModeValue("gray.800", "white")}
       p={1}
+      style={isAnimating ? { pointerEvents: "none" } : {}}
       _hover={{
         textDecoration: "none",
       }}

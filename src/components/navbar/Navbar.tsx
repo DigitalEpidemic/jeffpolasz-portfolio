@@ -71,6 +71,8 @@ const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
 };
 
 const DesktopNav = () => {
+  const { isAnimating } = useNavbar();
+
   return (
     <Flex display={{ base: "none", md: "flex" }} ml={{ md: 2, lg: 10 }}>
       <Stack direction={"row"} spacing={4}>
@@ -84,6 +86,7 @@ const DesktopNav = () => {
             duration={400}
             smooth={"easeInOutQuint"}
             offset={-61}
+            style={isAnimating ? { pointerEvents: "none" } : {}}
             py={2}
             px={{ md: 1, lg: 2 }}
             _hover={{
