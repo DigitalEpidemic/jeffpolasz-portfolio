@@ -26,6 +26,8 @@ export interface CardProps {
   gitHub?: string;
   filters?: CardTagProps[];
   forceSameHeight?: boolean;
+  maxCardThumbnailHeight?: number;
+  maxCardThumbnailWidth?: number;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -40,6 +42,8 @@ const Card: React.FC<CardProps> = ({
   gitHub,
   filters,
   forceSameHeight,
+  maxCardThumbnailHeight,
+  maxCardThumbnailWidth,
 }) => {
   const widthVariants = useBreakpointValue({ sm: "100%", xl: "390px" });
   return (
@@ -55,7 +59,12 @@ const Card: React.FC<CardProps> = ({
     >
       <Image
         w={"100%"}
-        src={thumbnail || "https://via.placeholder.com/512x250"}
+        src={
+          thumbnail ||
+          (maxCardThumbnailHeight && maxCardThumbnailWidth
+            ? `https://via.placeholder.com/${maxCardThumbnailWidth}x${maxCardThumbnailHeight}`
+            : "https://via.placeholder.com/512x250")
+        }
       />
       <Box p={5}>
         <Text fontSize={"xl"}>{title}</Text>
