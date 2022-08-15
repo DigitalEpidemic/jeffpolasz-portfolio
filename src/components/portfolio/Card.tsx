@@ -25,6 +25,7 @@ export interface CardProps {
   appStore?: string;
   gitHub?: string;
   filters?: CardTagProps[];
+  forceSameHeight?: boolean;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -38,11 +39,13 @@ const Card: React.FC<CardProps> = ({
   appStore,
   gitHub,
   filters,
+  forceSameHeight,
 }) => {
   const widthVariants = useBreakpointValue({ sm: "100%", xl: "390px" });
   return (
     <Box
       w={widthVariants}
+      h={forceSameHeight ? "100%" : "auto"}
       rounded={"10px"}
       overflow={"hidden"}
       boxShadow={"sm"}
@@ -52,7 +55,7 @@ const Card: React.FC<CardProps> = ({
     >
       <Image
         w={"100%"}
-        src={thumbnail || "https://via.placeholder.com/400x200"}
+        src={thumbnail || "https://via.placeholder.com/512x250"}
       />
       <Box p={5}>
         <Text fontSize={"xl"}>{title}</Text>
