@@ -39,7 +39,11 @@ const App = () => {
           excludeFilters={["Android", "iOS"]}
           forceSameHeight
         />
-        <Portfolio title="Web Projects" portfolioData={webProjects} />
+        <Portfolio
+          title="Web Projects"
+          portfolioData={webProjects}
+          forceSameHeight
+        />
         <Container mt={5} mb={5}>
           <Text>Hello, World!</Text>
         </Container>
