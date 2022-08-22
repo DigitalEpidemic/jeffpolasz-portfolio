@@ -22,6 +22,7 @@ export const gameProjects: CardProps[] = [
   {
     filters: [CardTagList.UNITY],
     title: "Perfect Knife",
+    thumbnail: "https://jeffpolasz.com/images/perfect-knife-featuredimg.jpg",
     description: "what",
     feature1: "happens?",
     googlePlay: "testing",

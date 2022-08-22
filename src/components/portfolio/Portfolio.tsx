@@ -13,12 +13,18 @@ interface PortfolioProps {
   title: string;
   portfolioData: CardProps[];
   excludeFilters?: string[];
+  forceSameHeight?: boolean;
+  maxCardThumbnailHeight?: number;
+  maxCardThumbnailWidth?: number;
 }
 
 const Portfolio: React.FC<PortfolioProps> = ({
   title,
   portfolioData,
   excludeFilters,
+  forceSameHeight,
+  maxCardThumbnailHeight,
+  maxCardThumbnailWidth,
 }) => {
   const [filter, setFilter] = useState("All");
   const [cardData, setCardData] = useState<CardProps[]>(portfolioData);
@@ -61,6 +67,7 @@ const Portfolio: React.FC<PortfolioProps> = ({
       <AnimatePresence exitBeforeEnter>
         <SimpleGrid
           columns={useBreakpointValue({ sm: 1, md: 2, lg: 3 })}
+          autoRows={forceSameHeight ? "1fr" : "auto"}
           spacing={10}
           py={3}
           mx={5}
@@ -74,7 +81,12 @@ const Portfolio: React.FC<PortfolioProps> = ({
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -screen.width, opacity: 0 }}
             >
-              <Card {...data} />
+              <Card
+                {...data}
+                forceSameHeight={forceSameHeight}
+                maxCardThumbnailHeight={maxCardThumbnailHeight}
+                maxCardThumbnailWidth={maxCardThumbnailWidth}
+              />
             </motion.div>
           ))}
         </SimpleGrid>
