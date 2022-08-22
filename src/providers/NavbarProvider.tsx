@@ -1,7 +1,14 @@
-import React, { useContext, createContext } from "react";
-import { useDisclosure } from "@chakra-ui/hooks";
+import React, {
+  useContext,
+  createContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import { useDisclosure, UseDisclosureProps } from "@chakra-ui/hooks";
+import { Events } from "react-scroll";
 
-const NavbarContext = createContext<NavbarState>({
+const initialState = {
   isOpen: false,
   onToggle: () => {
     /**/
@@ -9,20 +16,45 @@ const NavbarContext = createContext<NavbarState>({
   onClose: () => {
     /**/
   },
+  isAnimating: false,
+};
+
+const NavbarContext = createContext<NavbarState>({
+  ...initialState,
 });
 
-interface NavbarState {
+interface NavbarState extends UseDisclosureProps {
   onToggle: () => void;
   onClose: () => void;
   isOpen: boolean;
+  isAnimating: boolean;
 }
 
 export const NavbarProvider: React.FC = ({ children }) => {
-  const navbarState = useDisclosure();
+  const [state, setState] = useState<NavbarState>(initialState);
+  const disclosureState = useDisclosure();
+
+  useEffect(() => {
+    Events.scrollEvent.register("begin", () => {
+      setState({ ...state, isAnimating: true });
+    });
+    Events.scrollEvent.register("end", () => {
+      setState({ ...state, isAnimating: false });
+    });
+
+    return () => {
+      Events.scrollEvent.remove("begin");
+      Events.scrollEvent.remove("end");
+    };
+  }, []);
+
+  const value = useMemo(
+    () => ({ ...state, ...disclosureState }),
+    [state, disclosureState]
+  );
+
   return (
-    <NavbarContext.Provider value={navbarState}>
-      {children}
-    </NavbarContext.Provider>
+    <NavbarContext.Provider value={value}>{children}</NavbarContext.Provider>
   );
 };
 
