@@ -2,7 +2,7 @@ name: CI Tests
 
 on:
   pull_request:
-    branches: [ master, development ]
+    branches: [master, development]
 
 jobs:
   test:
@@ -11,6 +11,6 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 22.9.0
       - run: yarn
       - run: yarn test
