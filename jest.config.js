@@ -1,7 +1,7 @@
 /** @type {import('@ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
   preset: "ts-jest",
-  testEnvironment: "jsdom",
+  testEnvironment: "jest-environment-jsdom",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   roots: ["src"],
   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx)$",
