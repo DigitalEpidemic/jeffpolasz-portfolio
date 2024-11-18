@@ -1,5 +1,5 @@
+import { ChakraProvider } from "@chakra-ui/react";
 import { render, screen } from "@testing-library/react";
-import React from "react";
 import { CardTagList } from "../../data/CardTagList";
 import Card, { CardProps } from "./Card";
 
@@ -19,7 +19,11 @@ describe("Card", () => {
       },
     ];
 
-    render(<Card title={mockPortfolioData[0].title} />);
+    render(
+      <ChakraProvider>
+        <Card title={mockPortfolioData[0].title} />
+      </ChakraProvider>
+    );
 
     const cardTitle = screen.getByText(mockPortfolioData[0].title);
 
@@ -42,10 +46,12 @@ describe("Card", () => {
     ];
 
     render(
-      <Card
-        title={mockPortfolioData[0].title}
-        feature1={mockPortfolioData[0].feature1}
-      />
+      <ChakraProvider>
+        <Card
+          title={mockPortfolioData[0].title}
+          feature1={mockPortfolioData[0].feature1}
+        />
+      </ChakraProvider>
     );
 
     const highlightsText = screen.getByText(/highlights/i);

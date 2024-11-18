@@ -1,15 +1,15 @@
-import React from "react";
 import {
-  Flex,
-  Text,
-  VStack,
-  useBreakpointValue,
-  useColorModeValue,
   Avatar,
   Box,
-  keyframes,
   Button,
+  Flex,
+  Text,
+  useBreakpointValue,
+  useColorModeValue,
+  VStack,
 } from "@chakra-ui/react";
+import { keyframes } from "@emotion/react";
+import React from "react";
 
 interface HeroProps {
   backgroundImage: string;
@@ -51,7 +51,7 @@ const Hero: React.FC<HeroProps> = ({
             >
               {firstName}{" "}
               <Text
-                d={"inline"}
+                display={"inline"}
                 as={"span"}
                 color={useColorModeValue("white", "gray.800")}
                 fontWeight={700}

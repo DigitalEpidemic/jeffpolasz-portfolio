@@ -1,17 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
+import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
 import { NavbarProvider } from "./providers/NavbarProvider";
 
-// TODO: Create custom theme + dark mode toggle
-ReactDOM.render(
+const container = document.getElementById("root");
+const root = createRoot(container as HTMLElement);
+
+root.render(
   <React.StrictMode>
     <ChakraProvider>
       <NavbarProvider>
         <App />
       </NavbarProvider>
     </ChakraProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
