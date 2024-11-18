@@ -1,13 +1,13 @@
-import React, { SetStateAction, useMemo, useState } from "react";
 import {
   Container,
   Heading,
   SimpleGrid,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import FilterButtons from "./FilterButton";
-import Card, { CardProps } from "./Card";
 import { AnimatePresence, motion } from "framer-motion";
+import React, { SetStateAction, useMemo, useState } from "react";
+import Card, { CardProps } from "./Card";
+import FilterButtons from "./FilterButton";
 
 interface PortfolioProps {
   title: string;
@@ -64,7 +64,7 @@ const Portfolio: React.FC<PortfolioProps> = ({
         handleFilteringData={handleFilteringData}
         portfolioData={portfolioData}
       />
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence mode="wait">
         <SimpleGrid
           columns={useBreakpointValue({ sm: 1, md: 2, lg: 3 })}
           autoRows={forceSameHeight ? "1fr" : "auto"}

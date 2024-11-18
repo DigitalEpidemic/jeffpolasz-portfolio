@@ -1,15 +1,15 @@
-import React from "react";
 import {
-  Flex,
-  Text,
-  VStack,
-  useBreakpointValue,
-  useColorModeValue,
   Avatar,
   Box,
-  keyframes,
   Button,
+  Flex,
+  Text,
+  useBreakpointValue,
+  useColorModeValue,
+  VStack,
 } from "@chakra-ui/react";
+import { keyframes } from "@emotion/react";
+import React from "react";
 
 interface HeroProps {
   backgroundImage: string;
