@@ -1,5 +1,5 @@
+import { ChakraProvider } from "@chakra-ui/react";
 import { render, screen } from "@testing-library/react";
-import React from "react";
 import { CardTagList } from "../../data/CardTagList";
 import { CardProps } from "./Card";
 import { CardTagProps } from "./CardTag";
@@ -27,7 +27,11 @@ describe("Portfolio", () => {
   const title = "Game Stuff";
 
   it("renders Portfolio and mock data", () => {
-    render(<Portfolio title={title} portfolioData={mockPortfolioData} />);
+    render(
+      <ChakraProvider>
+        <Portfolio title={title} portfolioData={mockPortfolioData} />
+      </ChakraProvider>
+    );
 
     const portfolioTitle = screen.getByText(title);
     expect(portfolioTitle).toBeInTheDocument();
@@ -39,11 +43,13 @@ describe("Portfolio", () => {
     const excludeFilters = [other.title];
 
     render(
-      <Portfolio
-        title={title}
-        portfolioData={mockPortfolioData}
-        excludeFilters={excludeFilters}
-      />
+      <ChakraProvider>
+        <Portfolio
+          title={title}
+          portfolioData={mockPortfolioData}
+          excludeFilters={excludeFilters}
+        />
+      </ChakraProvider>
     );
 
     const otherFilter = screen.queryByRole("button", { name: other.title });
@@ -55,11 +61,13 @@ describe("Portfolio", () => {
     const excludeFilters = [other.title];
 
     render(
-      <Portfolio
-        title={title}
-        portfolioData={mockPortfolioData}
-        excludeFilters={excludeFilters}
-      />
+      <ChakraProvider>
+        <Portfolio
+          title={title}
+          portfolioData={mockPortfolioData}
+          excludeFilters={excludeFilters}
+        />
+      </ChakraProvider>
     );
 
     const otherFilter = screen.getByLabelText(other.title);

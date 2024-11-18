@@ -1,4 +1,4 @@
-import React from "react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { render, screen } from "@testing-library/react";
 import Hero from "./Hero";
 
@@ -10,14 +10,16 @@ describe("Hero", () => {
     const actionText = "Do Something Cool";
 
     render(
-      <Hero
-        backgroundImage="https://arlo-static-demo-dark.netlify.app/static/40a019176f85445c7910d98269bfbd0b/f3a00/bg-image-02.webp"
-        profileImage="https://i.pravatar.cc/200"
-        firstName={firstName}
-        lastName={lastName}
-        tagline={tagline}
-        actionText={actionText}
-      />
+      <ChakraProvider>
+        <Hero
+          backgroundImage="https://arlo-static-demo-dark.netlify.app/static/40a019176f85445c7910d98269bfbd0b/f3a00/bg-image-02.webp"
+          profileImage="https://i.pravatar.cc/200"
+          firstName={firstName}
+          lastName={lastName}
+          tagline={tagline}
+          actionText={actionText}
+        />
+      </ChakraProvider>
     );
 
     const firstNameElement = screen.getByText(firstName);
@@ -43,13 +45,15 @@ describe("Hero", () => {
 
   it("does not render Action Button when no prop is passed", () => {
     render(
-      <Hero
-        backgroundImage=""
-        profileImage=""
-        firstName=""
-        lastName=""
-        tagline=""
-      />
+      <ChakraProvider>
+        <Hero
+          backgroundImage=""
+          profileImage=""
+          firstName=""
+          lastName=""
+          tagline=""
+        />
+      </ChakraProvider>
     );
 
     const actionButtonElement = screen.queryByRole("button");

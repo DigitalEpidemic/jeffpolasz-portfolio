@@ -8,3 +8,13 @@ const noop = () => {
   /* */
 };
 Object.defineProperty(window, "scrollTo", { value: noop, writable: true });
+
+globalThis.matchMedia =
+  globalThis.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addListener: () => {},
+      removeListener: () => {},
+    };
+  };

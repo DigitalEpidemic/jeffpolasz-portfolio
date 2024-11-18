@@ -51,7 +51,7 @@ const Hero: React.FC<HeroProps> = ({
             >
               {firstName}{" "}
               <Text
-                d={"inline"}
+                display={"inline"}
                 as={"span"}
                 color={useColorModeValue("white", "gray.800")}
                 fontWeight={700}
