@@ -64,8 +64,8 @@ const Card: React.FC<CardProps> = ({
         src={
           thumbnail ||
           (maxCardThumbnailHeight && maxCardThumbnailWidth
-            ? `https://via.placeholder.com/${maxCardThumbnailWidth}x${maxCardThumbnailHeight}`
-            : "https://via.placeholder.com/512x250")
+            ? `https://placehold.co/${maxCardThumbnailWidth}x${maxCardThumbnailHeight}`
+            : "https://placehold.co/512x250")
         }
       />
       <Flex flexDir={"column"} flexGrow={1} p={5}>
