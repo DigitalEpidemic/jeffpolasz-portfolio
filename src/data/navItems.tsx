@@ -1,20 +1,22 @@
-import { NavItemProps } from "../components/navbar/Navbar";
+interface NavItemProps {
+  label: string;
+  href?: string;
+  subLabel?: string;
+  children?: Array<NavItemProps>;
+}
 
 export const NAV_ITEMS: Array<NavItemProps> = [
   {
     label: "Game Projects",
-    href: "#",
   },
   {
     label: "Web Projects",
-    href: "#",
   },
   {
     label: "Resume",
-    href: "#",
+    href: "/resume",
   },
   {
     label: "Contact Me",
-    href: "#",
   },
 ];

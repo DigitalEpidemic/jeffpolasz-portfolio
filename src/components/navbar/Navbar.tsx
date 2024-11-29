@@ -9,6 +9,7 @@ import {
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router";
 import { Link as ScrollLink } from "react-scroll";
 import { NAV_ITEMS } from "../../data/navItems";
 import { useNavbar } from "../../providers/NavbarProvider";
@@ -72,37 +73,57 @@ const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
 
 const DesktopNav = () => {
   const { isAnimating } = useNavbar();
+  const commonProps = {
+    py: 2,
+    px: { md: 1, lg: 2 },
+    _hover: {
+      color: useColorModeValue("black", "gray.200"),
+      textDecoration: "none",
+    },
+  };
 
   return (
     <Flex display={{ base: "none", md: "flex" }} ml={{ md: 2, lg: 10 }}>
       <Stack direction={"row"} spacing={4}>
-        {NAV_ITEMS.map((navItem) => (
-          <Link
-            as={ScrollLink}
-            key={navItem.label}
-            to={navItem.label}
-            spy={true}
-            ignoreCancelEvents
-            duration={400}
-            smooth={"easeInOutQuint"}
-            offset={-61}
-            style={isAnimating ? { pointerEvents: "none" } : {}}
-            py={2}
-            px={{ md: 1, lg: 2 }}
-            _hover={{
-              color: useColorModeValue("black", "gray.200"),
-              textDecoration: "none",
-            }}
-          >
-            {navItem.label}
-          </Link>
-        ))}
+        {NAV_ITEMS.map((navItem) => {
+          if (navItem.href === undefined) {
+            return (
+              <Link
+                as={ScrollLink}
+                key={navItem.label}
+                to={navItem.label}
+                spy={true}
+                ignoreCancelEvents
+                duration={400}
+                smooth={"easeInOutQuint"}
+                offset={-61}
+                style={isAnimating ? { pointerEvents: "none" } : {}}
+                {...commonProps}
+              >
+                {navItem.label}
+              </Link>
+            );
+          } else {
+            return (
+              <Link
+                as={RouterLink}
+                key={navItem.label}
+                to={navItem.href}
+                {...commonProps}
+              >
+                {navItem.label}
+              </Link>
+            );
+          }
+        })}
       </Stack>
     </Flex>
   );
 };
 
 const MobileNavDropdown = () => {
+  const { onClose } = useNavbar();
+
   return (
     <Stack
       bg={useColorModeValue("white", "gray.800")}
@@ -110,52 +131,67 @@ const MobileNavDropdown = () => {
       pb={4}
       display={{ md: "none" }}
     >
-      {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
-      ))}
+      {NAV_ITEMS.map((navItem) => {
+        if (navItem.href === undefined) {
+          return (
+            <Stack key={navItem.label} spacing={4}>
+              <Flex
+                px={6}
+                py={3}
+                mt={-2}
+                as={ScrollLink}
+                to={navItem.label}
+                spy={true}
+                duration={400}
+                smooth={"easeInOutQuint"}
+                offset={-61}
+                justify={"space-between"}
+                align={"center"}
+                onClick={onClose}
+                _hover={{
+                  background: useColorModeValue("gray.200", "gray.700"),
+                  textDecoration: "none",
+                }}
+              >
+                <Text
+                  fontWeight={600}
+                  color={useColorModeValue("gray.600", "gray.200")}
+                >
+                  {navItem.label}
+                </Text>
+              </Flex>
+            </Stack>
+          );
+        } else {
+          return (
+            <Stack key={navItem.label} spacing={4}>
+              <Flex
+                px={6}
+                py={3}
+                mt={-2}
+                as={RouterLink}
+                to={navItem.href}
+                justify={"space-between"}
+                align={"center"}
+                onClick={onClose}
+                _hover={{
+                  background: useColorModeValue("gray.200", "gray.700"),
+                  textDecoration: "none",
+                }}
+              >
+                <Text
+                  fontWeight={600}
+                  color={useColorModeValue("gray.600", "gray.200")}
+                >
+                  {navItem.label}
+                </Text>
+              </Flex>
+            </Stack>
+          );
+        }
+      })}
     </Stack>
   );
 };
-
-const MobileNavItem: React.FC<NavItemProps> = ({ label, children, href }) => {
-  const { onClose } = useNavbar();
-
-  return (
-    <Stack spacing={4}>
-      <Flex
-        px={6}
-        py={3}
-        mt={-2}
-        as={ScrollLink}
-        to={label}
-        spy={true}
-        duration={400}
-        smooth={"easeInOutQuint"}
-        offset={-61}
-        justify={"space-between"}
-        align={"center"}
-        onClick={onClose}
-        _hover={{
-          background: useColorModeValue("gray.200", "gray.700"),
-          textDecoration: "none",
-        }}
-      >
-        <Text
-          fontWeight={600}
-          color={useColorModeValue("gray.600", "gray.200")}
-        >
-          {label}
-        </Text>
-      </Flex>
-    </Stack>
-  );
-};
-
-export interface NavItemProps {
-  label: string;
-  subLabel?: string;
-  children?: Array<NavItemProps>;
-  href: string;
-}
 
 export default Navbar;
