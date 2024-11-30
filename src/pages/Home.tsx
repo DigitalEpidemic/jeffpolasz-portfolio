@@ -1,7 +1,7 @@
 import { Box, Container, Text } from "@chakra-ui/react";
 import React from "react";
 import { BsFillCaretUpFill } from "react-icons/bs";
-import { animateScroll } from "react-scroll";
+import { scrollToTop } from "../common/utils";
 import FloatingActionButton from "../components/fab/FloatingActionButton";
 import Footer from "../components/footer/Footer";
 import Hero from "../components/hero/Hero";
@@ -13,13 +13,6 @@ import { useNavbar } from "../providers/NavbarProvider";
 
 export const Home = () => {
   const { onClose } = useNavbar();
-  const scrollToTop = () => {
-    animateScroll.scrollToTop({
-      duration: 400,
-      smooth: "easeInOutQuint",
-      ignoreCancelEvents: true,
-    });
-  };
 
   return (
     <Box data-testid="Home" overflowX={"hidden"}>
