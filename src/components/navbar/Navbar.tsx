@@ -71,51 +71,78 @@ const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
   );
 };
 
-const DesktopNav = () => {
-  const { isAnimating } = useNavbar();
+const NavItem = ({
+  label,
+  href,
+  isMobile = false,
+  onClick,
+  isAnimating,
+}: {
+  label: string;
+  href?: string;
+  isMobile?: boolean;
+  onClick?: () => void;
+  isAnimating?: boolean;
+}) => {
   const commonProps = {
-    py: 2,
-    px: { md: 1, lg: 2 },
+    py: isMobile ? 3 : 2,
+    px: isMobile ? 6 : { md: 1, lg: 2 },
+    mt: isMobile ? -2 : 0,
+    justify: isMobile ? "space-between" : undefined,
+    fontWeight: isMobile ? 600 : undefined,
+    color: useColorModeValue(
+      isMobile ? "gray.600" : "inherit",
+      isMobile ? "gray.200" : "inherit"
+    ),
     _hover: {
-      color: useColorModeValue("black", "gray.200"),
+      background: isMobile
+        ? useColorModeValue("gray.200", "gray.700")
+        : undefined,
       textDecoration: "none",
+      color: useColorModeValue("black", "gray.200"),
     },
   };
+
+  if (!href) {
+    return (
+      <Link
+        as={ScrollLink}
+        to={label}
+        spy
+        duration={400}
+        smooth={"easeInOutQuint"}
+        offset={-61}
+        ignoreCancelEvents
+        onClick={onClick}
+        style={isAnimating ? { pointerEvents: "none" } : undefined}
+        {...commonProps}
+      >
+        {label}
+      </Link>
+    );
+  }
+
+  return (
+    <Link as={RouterLink} to={href} {...commonProps}>
+      {label}
+    </Link>
+  );
+};
+
+const DesktopNav = () => {
+  const { isAnimating } = useNavbar();
 
   return (
     <Flex display={{ base: "none", md: "flex" }} ml={{ md: 2, lg: 10 }}>
       <Stack direction={"row"} spacing={4}>
-        {NAV_ITEMS.map((navItem) => {
-          if (navItem.href === undefined) {
-            return (
-              <Link
-                as={ScrollLink}
-                key={navItem.label}
-                to={navItem.label}
-                spy={true}
-                ignoreCancelEvents
-                duration={400}
-                smooth={"easeInOutQuint"}
-                offset={-61}
-                style={isAnimating ? { pointerEvents: "none" } : {}}
-                {...commonProps}
-              >
-                {navItem.label}
-              </Link>
-            );
-          } else {
-            return (
-              <Link
-                as={RouterLink}
-                key={navItem.label}
-                to={navItem.href}
-                {...commonProps}
-              >
-                {navItem.label}
-              </Link>
-            );
-          }
-        })}
+        {NAV_ITEMS.map((navItem) => (
+          <NavItem
+            key={navItem.label}
+            label={navItem.label}
+            href={navItem.href}
+            isAnimating={isAnimating}
+          />
+        ))}
       </Stack>
     </Flex>
   );
@@ -131,65 +158,16 @@ const MobileNavDropdown = () => {
       pb={4}
       display={{ md: "none" }}
     >
-      {NAV_ITEMS.map((navItem) => {
-        if (navItem.href === undefined) {
-          return (
-            <Stack key={navItem.label} spacing={4}>
-              <Flex
-                px={6}
-                py={3}
-                mt={-2}
-                as={ScrollLink}
-                to={navItem.label}
-                spy={true}
-                duration={400}
-                smooth={"easeInOutQuint"}
-                offset={-61}
-                justify={"space-between"}
-                align={"center"}
-                onClick={onClose}
-                _hover={{
-                  background: useColorModeValue("gray.200", "gray.700"),
-                  textDecoration: "none",
-                }}
-              >
-                <Text
-                  fontWeight={600}
-                  color={useColorModeValue("gray.600", "gray.200")}
-                >
-                  {navItem.label}
-                </Text>
-              </Flex>
-            </Stack>
-          );
-        } else {
-          return (
-            <Stack key={navItem.label} spacing={4}>
-              <Flex
-                px={6}
-                py={3}
-                mt={-2}
-                as={RouterLink}
-                to={navItem.href}
-                justify={"space-between"}
-                align={"center"}
-                onClick={onClose}
-                _hover={{
-                  background: useColorModeValue("gray.200", "gray.700"),
-                  textDecoration: "none",
-                }}
-              >
-                <Text
-                  fontWeight={600}
-                  color={useColorModeValue("gray.600", "gray.200")}
-                >
-                  {navItem.label}
-                </Text>
-              </Flex>
-            </Stack>
-          );
-        }
-      })}
+      <Stack>
+        {NAV_ITEMS.map((navItem) => (
+          <NavItem
+            label={navItem.label}
+            href={navItem.href}
+            isMobile
+            onClick={onClose}
+          />
+        ))}
+      </Stack>
     </Stack>
   );
 };
