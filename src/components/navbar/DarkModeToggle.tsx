@@ -22,7 +22,7 @@ const DarkModeToggle: React.FC<DarkModeToggleProps> = ({
           aria-label="Dark Mode Toggle"
           justify="center"
           align="center"
-          pr={1}
+          mr={{ base: 0, md: 4 }}
         >
           <Switch
             sx={{

@@ -9,7 +9,7 @@ interface MenuToggleProps {
 
 const MenuToggle: React.FC<MenuToggleProps> = ({ onToggle, isOpen }) => {
   return (
-    <Flex mr={2} display={{ base: "auto", md: "none" }}>
+    <Flex display={{ base: "auto", md: "none" }}>
       <IconButton
         onClick={onToggle}
         icon={
