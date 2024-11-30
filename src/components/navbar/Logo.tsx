@@ -1,11 +1,12 @@
-import React from "react";
 import {
   Link,
   Text,
   useBreakpointValue,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { animateScroll } from "react-scroll";
+import React from "react";
+import { useLocation, useNavigate } from "react-router";
+import { scrollToTop } from "../../common/utils";
 import { useNavbar } from "../../providers/NavbarProvider";
 
 interface LogoProps {
@@ -13,15 +14,16 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({ logoText }) => {
-  const { onClose } = useNavbar();
-  const { isAnimating } = useNavbar();
+  const { onClose, isAnimating } = useNavbar();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleClick = () => {
-    animateScroll.scrollToTop({
-      duration: 400,
-      smooth: "easeInOutQuint",
-      ignoreCancelEvents: true,
-    });
+    if (location.pathname === "/resume") {
+      navigate("/");
+    }
+
+    scrollToTop();
     onClose();
   };
 

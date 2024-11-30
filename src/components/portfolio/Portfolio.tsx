@@ -80,6 +80,7 @@ const Portfolio: React.FC<PortfolioProps> = ({
               initial={{ x: screen.width, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -screen.width, opacity: 0 }}
+              transition={{ duration: 0.25 }}
             >
               <Card
                 {...data}

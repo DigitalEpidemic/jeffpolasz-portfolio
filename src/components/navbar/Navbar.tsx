@@ -8,8 +8,9 @@ import {
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router";
+import { Link as RouterLink, useLocation, useNavigate } from "react-router";
 import { Link as ScrollLink } from "react-scroll";
+import { scrollToTop } from "../../common/utils";
 import { NAV_ITEMS } from "../../data/navItems";
 import { useNavbar } from "../../providers/NavbarProvider";
 import DarkModeToggle from "./DarkModeToggle";
@@ -73,16 +74,19 @@ const Navbar: React.FC<NavbarProps> = ({ sticky = false }) => {
 const NavItem = ({
   label,
   href,
-  isMobile = false,
-  onClick,
   isAnimating,
+  isMobile,
+  onClick,
 }: {
   label: string;
   href?: string;
+  isAnimating?: boolean;
   isMobile?: boolean;
   onClick?: () => void;
-  isAnimating?: boolean;
 }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const commonProps = {
     py: isMobile ? 3 : 2,
     px: isMobile ? 6 : { md: 1, lg: 2 },
@@ -102,6 +106,19 @@ const NavItem = ({
     },
   };
 
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+
+    if (!href) {
+      if (location.pathname === "/resume" && label !== "Contact Me") {
+        navigate("/", { state: { target: label, isMobile } });
+      }
+      return; // Prevent further propagation
+    }
+  };
+
   if (!href) {
     return (
       <Link
@@ -112,7 +129,7 @@ const NavItem = ({
         smooth={"easeInOutQuint"}
         offset={-61}
         ignoreCancelEvents
-        onClick={onClick}
+        onClick={handleClick}
         style={isAnimating ? { pointerEvents: "none" } : undefined}
         {...commonProps}
       >
@@ -122,7 +139,12 @@ const NavItem = ({
   }
 
   return (
-    <Link as={RouterLink} to={href} {...commonProps}>
+    <Link
+      as={RouterLink}
+      onClick={isAnimating ? handleClick : scrollToTop}
+      to={href}
+      {...commonProps}
+    >
       {label}
     </Link>
   );

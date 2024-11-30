@@ -1,5 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router";
 import Logo from "./Logo";
 
 describe("Logo", () => {
@@ -7,7 +8,9 @@ describe("Logo", () => {
     const logoText = "Foobar";
     render(
       <ChakraProvider>
-        <Logo logoText={logoText} />
+        <BrowserRouter>
+          <Logo logoText={logoText} />
+        </BrowserRouter>
       </ChakraProvider>
     );
 

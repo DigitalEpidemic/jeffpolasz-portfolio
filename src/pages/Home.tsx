@@ -5,7 +5,6 @@ import { scrollToTop } from "../common/utils";
 import FloatingActionButton from "../components/fab/FloatingActionButton";
 import Footer from "../components/footer/Footer";
 import Hero from "../components/hero/Hero";
-import Navbar from "../components/navbar/Navbar";
 import Portfolio from "../components/portfolio/Portfolio";
 import { gameProjects } from "../data/gameProjects";
 import { webProjects } from "../data/webProjects";
@@ -16,7 +15,6 @@ export const Home = () => {
 
   return (
     <Box data-testid="Home" overflowX={"hidden"}>
-      <Navbar sticky />
       <Box onClick={onClose}>
         <Hero
           backgroundImage="https://arlo-static-demo-dark.netlify.app/static/40a019176f85445c7910d98269bfbd0b/f3a00/bg-image-02.webp"
