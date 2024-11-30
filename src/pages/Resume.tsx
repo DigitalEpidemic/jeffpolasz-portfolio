@@ -1,3 +1,3 @@
 export const Resume = () => {
-  return <div>Resume</div>;
+  return <div>Download Resume as .PDF</div>;
 };
