@@ -106,7 +106,7 @@ const NavItem = ({
     },
   };
 
-  const handleClick = () => {
+  const handleNonHrefClick = () => {
     if (onClick) {
       onClick();
     }
@@ -129,7 +129,7 @@ const NavItem = ({
         smooth={"easeInOutQuint"}
         offset={-61}
         ignoreCancelEvents
-        onClick={handleClick}
+        onClick={handleNonHrefClick}
         style={isAnimating ? { pointerEvents: "none" } : undefined}
         {...commonProps}
       >
@@ -138,13 +138,18 @@ const NavItem = ({
     );
   }
 
+  const handleHrefClick = () => {
+    if (onClick) {
+      onClick();
+    }
+
+    if (!isAnimating) {
+      scrollToTop();
+    }
+  };
+
   return (
-    <Link
-      as={RouterLink}
-      onClick={isAnimating ? handleClick : scrollToTop}
-      to={href}
-      {...commonProps}
-    >
+    <Link as={RouterLink} onClick={handleHrefClick} to={href} {...commonProps}>
       {label}
     </Link>
   );
