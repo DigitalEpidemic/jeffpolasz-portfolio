@@ -1,12 +1,15 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { BrowserRouter } from "react-router";
 import Navbar from "./Navbar";
 
 it("renders Navbar at 100vw width", () => {
   render(
     <ChakraProvider>
-      <Navbar sticky />
+      <BrowserRouter>
+        <Navbar sticky />
+      </BrowserRouter>
     </ChakraProvider>
   );
 

@@ -1,5 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router";
 import { Home } from "./Home";
 
 describe("Home", () => {
@@ -7,7 +8,9 @@ describe("Home", () => {
   it("renders Hello, World! text", () => {
     render(
       <ChakraProvider>
-        <Home />
+        <BrowserRouter>
+          <Home />
+        </BrowserRouter>
       </ChakraProvider>
     );
 
@@ -18,7 +21,9 @@ describe("Home", () => {
   it("hides horizontal scrollbar", () => {
     render(
       <ChakraProvider>
-        <Home />
+        <BrowserRouter>
+          <Home />
+        </BrowserRouter>
       </ChakraProvider>
     );
 
