@@ -152,7 +152,7 @@ const MobileNavDropdown = () => {
   const { onClose } = useNavbar();
 
   return (
-    <Stack
+    <Box
       bg={useColorModeValue("white", "gray.800")}
       pt={2}
       pb={4}
@@ -168,7 +168,7 @@ const MobileNavDropdown = () => {
           />
         ))}
       </Stack>
-    </Stack>
+    </Box>
   );
 };
 
