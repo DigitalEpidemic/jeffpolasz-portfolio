@@ -161,6 +161,7 @@ const MobileNavDropdown = () => {
       <Stack>
         {NAV_ITEMS.map((navItem) => (
           <NavItem
+            key={navItem.label}
             label={navItem.label}
             href={navItem.href}
             isMobile
