@@ -3,6 +3,7 @@ import pdfWorkerURL from "pdfjs-dist/build/pdf.worker.min?url";
 import { useEffect, useRef, useState } from "react";
 import { BsFillCaretUpFill } from "react-icons/bs";
 import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/Page/TextLayer.css";
 import resumePdf from "../assets/jeffreypolasz-resume.pdf";
 import { downloadFile, scrollToTop } from "../common/utils";
 import FloatingActionButton from "../components/fab/FloatingActionButton";
@@ -67,7 +68,6 @@ export const Resume = () => {
                   pageNumber={index + 1}
                   width={getContainerWidth()} // Apply zoom based on state
                   scale={zoom}
-                  renderTextLayer={false}
                   renderAnnotationLayer={false}
                 />
               ))}
