@@ -1,4 +1,4 @@
-import { Box, Link, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Link, Stack, Text } from "@chakra-ui/react";
 import pdfWorkerURL from "pdfjs-dist/build/pdf.worker.min?url";
 import { useEffect, useRef, useState } from "react";
 import { BsFillCaretUpFill } from "react-icons/bs";
@@ -15,6 +15,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 export const Resume = () => {
   const [numPages, setNumPages] = useState<number | null>(null);
+  const [zoom, setZoom] = useState(1); // State to track zoom level
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,6 +27,14 @@ export const Resume = () => {
       return containerRef.current.offsetWidth;
     }
     return 0;
+  };
+
+  const handleZoomIn = () => {
+    setZoom((prevZoom) => Math.min(prevZoom + 0.1, 2)); // Zoom in with max zoom level of 2
+  };
+
+  const handleZoomOut = () => {
+    setZoom((prevZoom) => Math.max(prevZoom - 0.1, 0.5)); // Zoom out with min zoom level of 0.5
   };
 
   return (
@@ -43,6 +52,7 @@ export const Resume = () => {
           <Text as={"b"}>Download Resume as .PDF</Text>
         </Link>
 
+        {/* Document container with zoom effect */}
         <Box ref={containerRef} width="100%" maxWidth="1080px">
           <Document
             file={resumePdf}
@@ -54,7 +64,8 @@ export const Resume = () => {
                 <Page
                   key={index}
                   pageNumber={index + 1}
-                  width={getContainerWidth()}
+                  width={getContainerWidth()} // Apply zoom based on state
+                  scale={zoom}
                   renderTextLayer={false}
                   renderAnnotationLayer={false}
                 />
@@ -62,6 +73,26 @@ export const Resume = () => {
           </Document>
         </Box>
       </Stack>
+
+      {/* Floating Zoom In and Zoom Out buttons */}
+      <Flex
+        position="fixed"
+        bottom="20px"
+        left="50%"
+        transform="translateX(-50%)"
+        direction="row"
+        justify="center"
+        align="center"
+        zIndex={10} // Ensure the buttons stay on top
+        gap={2}
+      >
+        <Button onClick={handleZoomOut} size="sm" rounded={"full"}>
+          -
+        </Button>
+        <Button onClick={handleZoomIn} size="sm" rounded={"full"}>
+          +
+        </Button>
+      </Flex>
 
       <Footer />
 
