@@ -145,10 +145,10 @@ const ZoomControls = ({
 }) => (
   <Flex
     position="fixed"
-    bottom="15px"
-    left="50%"
-    transform="translateX(-50%)"
-    direction="row"
+    mb={1}
+    bottom={16}
+    right={2}
+    direction="column"
     justify="center"
     align="center"
     zIndex={10}
