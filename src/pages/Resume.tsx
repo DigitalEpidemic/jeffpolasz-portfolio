@@ -21,7 +21,7 @@ const ZOOM_STEP = 0.25;
 
 export const Resume = () => {
   const [numPages, setNumPages] = useState<number | null>(null);
-  const [zoom, setZoom] = useState(1); // State to track zoom level
+  const [zoom, setZoom] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -36,11 +36,15 @@ export const Resume = () => {
   };
 
   const handleZoomIn = () => {
-    setZoom((prevZoom) => Math.min(prevZoom + ZOOM_STEP, MAX_ZOOM_LEVEL));
+    if (zoom < MAX_ZOOM_LEVEL) {
+      setZoom((prevZoom) => Math.min(prevZoom + ZOOM_STEP, MAX_ZOOM_LEVEL));
+    }
   };
 
   const handleZoomOut = () => {
-    setZoom((prevZoom) => Math.max(prevZoom - ZOOM_STEP, MIN_ZOOM_LEVEL));
+    if (zoom > MIN_ZOOM_LEVEL) {
+      setZoom((prevZoom) => Math.max(prevZoom - ZOOM_STEP, MIN_ZOOM_LEVEL));
+    }
   };
 
   return (
@@ -89,10 +93,20 @@ export const Resume = () => {
         zIndex={10}
         gap={2}
       >
-        <Button onClick={handleZoomOut} size="md" rounded={"full"}>
+        <Button
+          onClick={handleZoomOut}
+          size="md"
+          rounded={"full"}
+          isDisabled={zoom <= MIN_ZOOM_LEVEL}
+        >
           -
         </Button>
-        <Button onClick={handleZoomIn} size="md" rounded={"full"}>
+        <Button
+          onClick={handleZoomIn}
+          size="md"
+          rounded={"full"}
+          isDisabled={zoom >= MAX_ZOOM_LEVEL}
+        >
           +
         </Button>
       </Flex>
