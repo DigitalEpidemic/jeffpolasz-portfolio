@@ -7,6 +7,7 @@ import resumePdf from "../assets/jeffreypolasz-resume.pdf";
 import { downloadFile, scrollToTop } from "../common/utils";
 import FloatingActionButton from "../components/fab/FloatingActionButton";
 import Footer from "../components/footer/Footer";
+import "./resume.css";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   pdfWorkerURL,
