@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, ColorMode, Flex, Switch } from "@chakra-ui/react";
 import { BsFillMoonStarsFill, BsSunFill } from "react-icons/bs";
-import moonsvg from "./images/moon.svg";
-import sunsvg from "./images/sun.svg";
+import moonsvg from "/moon.svg";
+import sunsvg from "/sun.svg";
 
 interface DarkModeToggleProps {
   colorMode: ColorMode;
