@@ -148,6 +148,7 @@ const ZoomControls = ({
   >
     <Button
       onClick={handleZoomOut}
+      colorScheme="green" // TODO: Create custom color scheme
       size="md"
       rounded="full"
       isDisabled={zoom <= MIN_ZOOM_LEVEL}
@@ -156,6 +157,7 @@ const ZoomControls = ({
     </Button>
     <Button
       onClick={handleZoomIn}
+      colorScheme="green" // TODO: Create custom color scheme
       size="md"
       rounded="full"
       isDisabled={zoom >= MAX_ZOOM_LEVEL}

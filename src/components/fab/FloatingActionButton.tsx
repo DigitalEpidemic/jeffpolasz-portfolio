@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
-import { ReactElement } from "react";
 import { IconButton, IconButtonProps } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import React, { ReactElement, useEffect } from "react";
 
 interface FloatingActionButtonProps {
   icon: ReactElement;
@@ -70,6 +69,7 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
       onAnimationComplete={handleOnComplete}
     >
       <IconButton
+        colorScheme={"green"} // TODO: Create custom color scheme
         disabled={isDisabled}
         zIndex={102}
         position={"fixed"}
