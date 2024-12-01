@@ -15,6 +15,10 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url
 ).toString();
 
+const MAX_ZOOM_LEVEL = 4;
+const MIN_ZOOM_LEVEL = 0.5;
+const ZOOM_STEP = 0.25;
+
 export const Resume = () => {
   const [numPages, setNumPages] = useState<number | null>(null);
   const [zoom, setZoom] = useState(1); // State to track zoom level
@@ -32,11 +36,11 @@ export const Resume = () => {
   };
 
   const handleZoomIn = () => {
-    setZoom((prevZoom) => Math.min(prevZoom + 0.1, 2)); // Zoom in with max zoom level of 2
+    setZoom((prevZoom) => Math.min(prevZoom + ZOOM_STEP, MAX_ZOOM_LEVEL));
   };
 
   const handleZoomOut = () => {
-    setZoom((prevZoom) => Math.max(prevZoom - 0.1, 0.5)); // Zoom out with min zoom level of 0.5
+    setZoom((prevZoom) => Math.max(prevZoom - ZOOM_STEP, MIN_ZOOM_LEVEL));
   };
 
   return (
@@ -54,7 +58,6 @@ export const Resume = () => {
           <Text as={"b"}>Download Resume as .PDF</Text>
         </Link>
 
-        {/* Document container with zoom effect */}
         <Box ref={containerRef} className="pdf-container" width="100%">
           <Document
             file={resumePdf}
@@ -66,7 +69,7 @@ export const Resume = () => {
                 <Page
                   key={index}
                   pageNumber={index + 1}
-                  width={getContainerWidth()} // Apply zoom based on state
+                  width={getContainerWidth()}
                   scale={zoom}
                   renderAnnotationLayer={false}
                 />
@@ -75,7 +78,6 @@ export const Resume = () => {
         </Box>
       </Stack>
 
-      {/* Floating Zoom In and Zoom Out buttons */}
       <Flex
         position="fixed"
         bottom="15px"
@@ -84,7 +86,7 @@ export const Resume = () => {
         direction="row"
         justify="center"
         align="center"
-        zIndex={10} // Ensure the buttons stay on top
+        zIndex={10}
         gap={2}
       >
         <Button onClick={handleZoomOut} size="md" rounded={"full"}>
