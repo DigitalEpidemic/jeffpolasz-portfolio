@@ -78,7 +78,7 @@ export const Resume = () => {
       {/* Floating Zoom In and Zoom Out buttons */}
       <Flex
         position="fixed"
-        bottom="20px"
+        bottom="15px"
         left="50%"
         transform="translateX(-50%)"
         direction="row"
@@ -87,10 +87,10 @@ export const Resume = () => {
         zIndex={10} // Ensure the buttons stay on top
         gap={2}
       >
-        <Button onClick={handleZoomOut} size="sm" rounded={"full"}>
+        <Button onClick={handleZoomOut} size="md" rounded={"full"}>
           -
         </Button>
-        <Button onClick={handleZoomIn} size="sm" rounded={"full"}>
+        <Button onClick={handleZoomIn} size="md" rounded={"full"}>
           +
         </Button>
       </Flex>
