@@ -1,7 +1,8 @@
-import { Box, Button, Flex, Link, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, IconButton, Link, Stack, Text } from "@chakra-ui/react";
 import pdfWorkerURL from "pdfjs-dist/build/pdf.worker.min?url";
 import { useEffect, useRef, useState } from "react";
 import { BsFillCaretUpFill } from "react-icons/bs";
+import { FaMinus, FaPlus } from "react-icons/fa";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/TextLayer.css";
 import resumePdf from "../assets/jeffreypolasz-resume.pdf";
@@ -145,32 +146,34 @@ const ZoomControls = ({
 }) => (
   <Flex
     position="fixed"
-    mb={1}
-    bottom={16}
+    bottom="50%"
     right={2}
+    transform="translateY(50%)"
     direction="column"
     justify="center"
     align="center"
     zIndex={10}
     gap={2}
   >
-    <Button
-      onClick={handleZoomOut}
-      colorScheme="green" // TODO: Create custom color scheme
-      size="md"
-      rounded="full"
-      isDisabled={zoom <= MIN_ZOOM_LEVEL}
-    >
-      -
-    </Button>
-    <Button
+    <IconButton
       onClick={handleZoomIn}
       colorScheme="green" // TODO: Create custom color scheme
-      size="md"
-      rounded="full"
+      size="sm"
+      borderRadius={30}
       isDisabled={zoom >= MAX_ZOOM_LEVEL}
+      aria-label={"Zoom In"}
     >
-      +
-    </Button>
+      <FaPlus size={12} />
+    </IconButton>
+    <IconButton
+      onClick={handleZoomOut}
+      colorScheme="green" // TODO: Create custom color scheme
+      size="sm"
+      borderRadius={30}
+      isDisabled={zoom <= MIN_ZOOM_LEVEL}
+      aria-label={"Zoom In"}
+    >
+      <FaMinus size={12} />
+    </IconButton>
   </Flex>
 );
