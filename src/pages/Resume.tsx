@@ -54,7 +54,7 @@ export const Resume = () => {
         </Link>
 
         {/* Document container with zoom effect */}
-        <Box ref={containerRef} width="100%" maxWidth="1080px">
+        <Box ref={containerRef} className="pdf-container" width="100%">
           <Document
             file={resumePdf}
             onLoadError={(e) => console.log("Error loading PDF", e)}

@@ -1,3 +1,22 @@
-canvas.react-pdf__Page__canvas {
-  justify-self: center;
+/* This centers the PDF canvas horizontally */
+.react-pdf__Page__canvas {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.3s ease;
+}
+
+/* Ensure the container can scroll horizontally if the canvas becomes larger than its width */
+.pdf-container {
+  overflow-x: auto;
+  overflow-y: hidden; /* You can adjust based on your needs */
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* You can add a max width to prevent excessive stretching */
+.pdf-container > div {
+  max-width: 100%;
 }
