@@ -12,8 +12,8 @@ export const Resume = () => {
   }, []);
 
   return (
-    <Box h={"100vh"} data-testid="Resume">
-      <Stack mt={"65px"} h={"100%"}>
+    <Box h={"80vh"} data-testid="Resume">
+      <Stack mt={"65px"} h={"100%"} align={"center"}>
         <Link
           onClick={() => downloadFile(resumePdf, "jeffreypolasz-resume.pdf")}
           alignSelf={"center"}
@@ -23,6 +23,7 @@ export const Resume = () => {
         <iframe
           width={"100%"}
           height={"100%"}
+          style={{ maxWidth: "1080px" }}
           src="https://drive.google.com/file/d/16KzzDWwR7_TX2BmeobE4-uihwT1OnYiD/preview"
         />
       </Stack>
