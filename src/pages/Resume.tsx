@@ -33,7 +33,10 @@ export const Resume = () => {
     setNumPages(numPages);
   };
 
-  const getContainerWidth = () => containerRef.current?.offsetWidth || 0;
+  const getContainerWidth = () => {
+    const width = containerRef.current?.offsetWidth || 0;
+    return Math.min(width, 1080);
+  };
 
   const handleZoomIn = () => {
     if (zoom < MAX_ZOOM_LEVEL) {
@@ -51,7 +54,7 @@ export const Resume = () => {
     <Box
       display="flex"
       flexDirection="column"
-      minHeight="100vh"
+      maxHeight="100vh"
       data-testid="Resume"
     >
       <Stack mt="65px" align="center" overflowY="auto">
@@ -106,7 +109,12 @@ const PdfViewer = ({
   onDocumentLoadSuccess: (params: { numPages: number }) => void;
   containerWidth: number;
 }) => (
-  <Box ref={containerRef} className="pdf-container" width="100%">
+  <Box
+    ref={containerRef}
+    className="pdf-container"
+    width="100%"
+    overflow="auto"
+  >
     <Document
       file={resumePdf}
       onLoadError={(e) => console.error("Error loading PDF", e)}
