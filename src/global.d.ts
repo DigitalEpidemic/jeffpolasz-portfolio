@@ -7,3 +7,8 @@ declare module "*.pdf" {
   const value: string;
   export default value;
 }
+
+declare module "pdfjs-dist/build/pdf.worker.min?url" {
+  const workerSrc: string;
+  export default workerSrc;
+}
