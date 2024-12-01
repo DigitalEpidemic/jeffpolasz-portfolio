@@ -147,7 +147,7 @@ const ZoomControls = ({
   <Flex
     position="fixed"
     bottom="50%"
-    right={2}
+    right={{ base: 2, md: 5 }}
     transform="translateY(50%)"
     direction="column"
     justify="center"
