@@ -6,6 +6,13 @@ A modern, responsive portfolio website showcasing game development and web devel
 
 **Production:** [https://jeffpolasz.com](https://jeffpolasz.com)
 
+## 📸 Screenshots
+
+| Main Portfolio View | Project Detail Page |
+|:---:|:---:|
+| ![Main Portfolio](public/jeffrey-polasz-portfolio/Main.png) | ![Project Detail](public/jeffrey-polasz-portfolio/Post.png) |
+| Reddit-inspired layout with sidebar navigation | Detailed project showcase with tech stack |
+
 ## ✨ Features
 
 - **Reddit-inspired UI** with desktop sidebar and mobile sheet navigation
