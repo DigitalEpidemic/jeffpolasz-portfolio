@@ -5,6 +5,7 @@ import {
 } from '@/components/structured-data';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { Inter } from 'next/font/google';
 import './globals.css';
 
@@ -114,6 +115,7 @@ export default function RootLayout({
           {children}
           <Toaster />
         </ThemeProvider>
+        <GoogleAnalytics gaId="G-QF1KHYCM9J" />
       </body>
     </html>
   );
