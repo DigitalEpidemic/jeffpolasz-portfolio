@@ -190,9 +190,10 @@ function findHtmlFiles(dir, files = []) {
 
 function main() {
   const outDir = path.join(process.cwd(), 'out');
-  
+
   // Check for silent flag
-  const silent = process.argv.includes('--silent') || process.argv.includes('-s');
+  const silent =
+    process.argv.includes('--silent') || process.argv.includes('-s');
 
   if (!fs.existsSync(outDir)) {
     console.error(
@@ -215,7 +216,9 @@ function main() {
     // Skip index.html as it already has metadata from layout.tsx
     if (path.basename(file) === 'index.html') {
       if (!silent) {
-        console.log(`    ${path.basename(file)}: \x1b[33mskipped\x1b[0m (hardcoded in layout.tsx)`);
+        console.log(
+          `    ${path.basename(file)}: \x1b[33mskipped\x1b[0m (hardcoded in layout.tsx)`
+        );
       }
       skippedFiles.push({
         file: path.basename(file),
@@ -232,7 +235,9 @@ function main() {
       }
     } else {
       if (!silent) {
-        console.log(`    ${path.basename(file)}: \x1b[33mskipped\x1b[0m (${result.reason})`);
+        console.log(
+          `    ${path.basename(file)}: \x1b[33mskipped\x1b[0m (${result.reason})`
+        );
       }
       skippedFiles.push({ file: path.basename(file), reason: result.reason });
     }
@@ -241,15 +246,21 @@ function main() {
   // Final summary
   const totalFiles = htmlFiles.length;
   const skippedCount = skippedFiles.length;
-  
-  console.log(` \x1b[32m✓\x1b[0m Processed ${totalFiles} HTML file${totalFiles !== 1 ? 's' : ''}`);
-  
+
+  console.log(
+    ` \x1b[32m✓\x1b[0m Processed ${totalFiles} HTML file${totalFiles !== 1 ? 's' : ''}`
+  );
+
   if (processedCount > 0) {
-    console.log(`    \x1b[32m${processedCount}\x1b[0m file${processedCount !== 1 ? 's' : ''} updated with metadata`);
+    console.log(
+      `    \x1b[32m${processedCount}\x1b[0m file${processedCount !== 1 ? 's' : ''} updated with metadata`
+    );
   }
-  
+
   if (skippedCount > 0) {
-    console.log(`    \x1b[33m${skippedCount}\x1b[0m file${skippedCount !== 1 ? 's' : ''} skipped`);
+    console.log(
+      `    \x1b[33m${skippedCount}\x1b[0m file${skippedCount !== 1 ? 's' : ''} skipped`
+    );
   }
 
   console.log(' \x1b[32m✓\x1b[0m Metadata processing complete');
