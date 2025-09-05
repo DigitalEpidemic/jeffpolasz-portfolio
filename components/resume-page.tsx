@@ -118,9 +118,9 @@ export default function ResumePageClient() {
               >
                 <Card className="p-4 sm:p-6 md:p-8">
                   <section className="mb-6 md:mb-8">
-                    <h2 className="text-xl md:text-2xl font-semibold mb-1 text-center">
+                    <h1 className="text-xl md:text-2xl font-semibold mb-1 text-center">
                       Jeffrey Polasz
-                    </h2>
+                    </h1>
                     <div className="flex flex-wrap gap-y-1 text-sm text-gray-700 dark:text-gray-300 justify-center">
                       <p className="text-primary">519-277-5337</p>
                       <span className="px-1">|</span>
@@ -156,21 +156,21 @@ export default function ResumePageClient() {
                   </section>
 
                   <section className="mb-6 md:mb-8">
-                    <h3 className="text-lg md:text-xl font-semibold border-b pb-1 mb-3 md:mb-4">
+                    <h2 className="text-lg md:text-xl font-semibold border-b pb-1 mb-3 md:mb-4">
                       Skills
-                    </h3>
+                    </h2>
                     <div className="space-y-4">
                       <div>
-                        <h4 className="font-medium mb-1">Languages:</h4>
+                        <h3 className="font-medium mb-1">Languages:</h3>
                         <p className="text-gray-700 dark:text-gray-300">
                           C#, JavaScript, TypeScript, HTML, CSS, Java, Ruby,
                           PHP, Python, C++, SQL
                         </p>
                       </div>
                       <div>
-                        <h4 className="font-medium mb-1">
+                        <h3 className="font-medium mb-1">
                           Frameworks/Libraries:
-                        </h4>
+                        </h3>
                         <p className="text-gray-700 dark:text-gray-300">
                           React, Vite, React Native, TypeORM, .NET Core, Entity
                           Framework, Tailwind, Node, Electron, Laravel, Ruby on
@@ -179,7 +179,7 @@ export default function ResumePageClient() {
                         </p>
                       </div>
                       <div>
-                        <h4 className="font-medium mb-1">Tools:</h4>
+                        <h3 className="font-medium mb-1">Tools:</h3>
                         <p className="text-gray-700 dark:text-gray-300">
                           Docker, SQL Server, PostgreSQL, Xcode, GitHub Actions,
                           JIRA, Confluence, Azure, Firebase, WordPress, Git,
@@ -190,18 +190,18 @@ export default function ResumePageClient() {
                   </section>
 
                   <section className="mb-6 md:mb-8">
-                    <h3 className="text-lg md:text-xl font-semibold border-b pb-1 mb-3 md:mb-4">
+                    <h2 className="text-lg md:text-xl font-semibold border-b pb-1 mb-3 md:mb-4">
                       Experience
-                    </h3>
+                    </h2>
                     <div className="space-y-5 md:space-y-6">
                       <div>
                         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-1">
-                          <h4>
+                          <h3>
                             <span className="font-medium">Developer</span>,{' '}
                             <span className="text-gray-700 dark:text-gray-300">
                               Vehikl - Waterloo, ON
                             </span>
-                          </h4>
+                          </h3>
                           <p className="text-sm text-gray-700 dark:text-gray-300">
                             Sep 2020 - Present
                           </p>
@@ -237,7 +237,7 @@ export default function ResumePageClient() {
 
                       <div>
                         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-1">
-                          <h4>
+                          <h3>
                             <span className="font-medium">
                               Unity Game Developer
                             </span>
@@ -245,7 +245,7 @@ export default function ResumePageClient() {
                             <span className="text-gray-700 dark:text-gray-300">
                               Adknown - Guelph, ON
                             </span>
-                          </h4>
+                          </h3>
                           <p className="text-sm text-gray-700 dark:text-gray-300">
                             May 2019 - Sep 2020
                           </p>
@@ -275,7 +275,7 @@ export default function ResumePageClient() {
                       </div>
                       <div>
                         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-1">
-                          <h4>
+                          <h3>
                             <span className="font-medium">
                               Web Developer & Graphic Designer
                             </span>
@@ -283,7 +283,7 @@ export default function ResumePageClient() {
                             <span className="text-gray-700 dark:text-gray-300">
                               Freelance - Cambridge, ON
                             </span>
-                          </h4>
+                          </h3>
                           <p className="text-sm text-gray-700 dark:text-gray-300">
                             Jun 2013 - May 2019
                           </p>
@@ -304,20 +304,20 @@ export default function ResumePageClient() {
                   </section>
 
                   <section className="mb-6 md:mb-8">
-                    <h3 className="text-lg md:text-xl font-semibold border-b pb-1 mb-3 md:mb-4">
+                    <h2 className="text-lg md:text-xl font-semibold border-b pb-1 mb-3 md:mb-4">
                       Projects
-                    </h3>
+                    </h2>
                     <div className="space-y-5 md:space-y-6">
                       <div>
                         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1">
-                          <h4 className="mb-1 sm:mb-0">
+                          <h3 className="mb-1 sm:mb-0">
                             <span className="font-medium">
                               AI Voice Translator
                             </span>{' '}
                             <span className="text-gray-700 dark:text-gray-300">
                               | Electron, TypeScript, React, Chakra UI
                             </span>
-                          </h4>
+                          </h3>
                           <p className="text-sm text-primary">
                             <Link
                               href="https://github.com/DigitalEpidemic/ai-voice-translator"
@@ -345,12 +345,12 @@ export default function ResumePageClient() {
                       </div>
                       <div>
                         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1">
-                          <h4 className="mb-1 sm:mb-0">
+                          <h3 className="mb-1 sm:mb-0">
                             <span className="font-medium">Retro Tool</span>{' '}
                             <span className="text-gray-700 dark:text-gray-300">
                               | TypeScript, React, Firebase, Tailwind
                             </span>
-                          </h4>
+                          </h3>
                           <p className="text-sm text-primary">
                             <Link
                               href="https://retro-tool.netlify.app"
@@ -377,12 +377,12 @@ export default function ResumePageClient() {
                       </div>
                       <div>
                         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1">
-                          <h4 className="mb-1 sm:mb-0">
+                          <h3 className="mb-1 sm:mb-0">
                             <span className="font-medium">PowerCalc</span>{' '}
                             <span className="text-gray-700 dark:text-gray-300">
                               | TypeScript, React Native
                             </span>
-                          </h4>
+                          </h3>
                           <p className="text-sm text-gray-700 dark:text-gray-300"></p>
                         </div>
                         <ul className="list-disc list-outside ml-5 text-sm md:text-base text-gray-700 dark:text-gray-300 space-y-1.5">
@@ -403,16 +403,16 @@ export default function ResumePageClient() {
                   </section>
 
                   <section>
-                    <h3 className="text-lg md:text-xl font-semibold border-b pb-1 mb-3 md:mb-4">
+                    <h2 className="text-lg md:text-xl font-semibold border-b pb-1 mb-3 md:mb-4">
                       Education
-                    </h3>
+                    </h2>
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
-                      <h4>
+                      <h3>
                         <span className="font-medium">Western University</span>{' '}
                         <span className="text-gray-700 dark:text-gray-300">
                           - Major in Computer Science, Minor in Game Development
                         </span>
-                      </h4>
+                      </h3>
                       <p className="text-sm text-gray-700 dark:text-gray-300">
                         Sep 2015 - Jan 2018
                       </p>

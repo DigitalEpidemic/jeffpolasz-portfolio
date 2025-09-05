@@ -139,12 +139,12 @@ export default function PostPageClient({ post }: PostPageClientProps) {
                   </span>
                 </div>
 
-                <motion.h2
+                <motion.h1
                   className="px-2 text-lg font-medium text-foreground"
                   variants={staggerItem}
                 >
                   {post.title}
-                </motion.h2>
+                </motion.h1>
 
                 <div className="mt-2">
                   {post.tags && post.tags.length > 0 && (
@@ -212,9 +212,9 @@ export default function PostPageClient({ post }: PostPageClientProps) {
               variants={staggerItem}
             >
               <div className="border-b border-border pb-4">
-                <h3 className="font-medium text-foreground mb-3">
+                <h2 className="font-medium text-foreground mb-3">
                   Project Showcase
-                </h3>
+                </h2>
 
                 {post.screenshots && post.screenshots.length > 0 ? (
                   <div className="mt-2">
@@ -247,7 +247,7 @@ export default function PostPageClient({ post }: PostPageClientProps) {
 
               {post.video && (
                 <div className="mt-4">
-                  <h4 className="font-medium text-sm mb-2">Demo Video</h4>
+                  <h3 className="font-medium text-sm mb-2">Demo Video</h3>
                   <div className="aspect-video rounded-md overflow-hidden">
                     <iframe
                       src={post.video}
