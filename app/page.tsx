@@ -118,10 +118,10 @@ export default function Home() {
           [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]
         "
       >
+        <h1 className="sr-only">Jeffrey Polasz - Portfolio</h1>
         <div className="flex-1">
           {isMobile && (
             <div className="mb-4">
-              <h1 className="sr-only">Jeffrey Polasz - Portfolio</h1>
               <ProfileHeader
                 displayName={SITE_OWNER}
                 username={SITE_OWNER_USERNAME}
@@ -222,7 +222,6 @@ export default function Home() {
         {isDesktop && (
           <div className="w-[312px] xl:w-[312px] lg:w-[250px] md:w-[220px]">
             <div className="fixed w-[312px] xl:w-[312px] lg:w-[250px] md:w-[220px]">
-              <h1 className="sr-only">Jeffrey Polasz - Portfolio</h1>
               <ProfileHeader
                 displayName={SITE_OWNER}
                 username={SITE_OWNER_USERNAME}

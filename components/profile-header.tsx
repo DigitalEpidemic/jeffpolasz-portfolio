@@ -139,9 +139,9 @@ export default function ProfileHeader({
         custom={0.4}
       >
         <div className="flex items-center justify-between">
-          <h1 className="text-xl font-semibold text-foreground">
+          <h2 className="text-xl font-semibold text-foreground">
             {displayName}
-          </h1>
+          </h2>
           <Button
             variant="ghost"
             size="icon"

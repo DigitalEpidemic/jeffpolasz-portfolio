@@ -27,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-
         <title>Jeffrey Polasz - Portfolio</title>
         <meta
           name="description"
