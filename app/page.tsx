@@ -118,6 +118,7 @@ export default function Home() {
           [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]
         "
       >
+        <h1 className="sr-only">Jeffrey Polasz - Portfolio</h1>
         <div className="flex-1">
           {isMobile && (
             <div className="mb-4">

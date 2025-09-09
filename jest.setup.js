@@ -101,6 +101,16 @@ jest.mock('framer-motion', () => ({
       transition,
       ...props
     }) => <article {...props}>{children}</article>,
+    h1: ({
+      children,
+      whileHover,
+      whileTap,
+      initial,
+      animate,
+      variants,
+      transition,
+      ...props
+    }) => <h1 {...props}>{children}</h1>,
     h2: ({
       children,
       whileHover,
@@ -111,6 +121,16 @@ jest.mock('framer-motion', () => ({
       transition,
       ...props
     }) => <h2 {...props}>{children}</h2>,
+    h3: ({
+      children,
+      whileHover,
+      whileTap,
+      initial,
+      animate,
+      variants,
+      transition,
+      ...props
+    }) => <h3 {...props}>{children}</h3>,
     p: ({
       children,
       whileHover,
