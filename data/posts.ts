@@ -2179,6 +2179,55 @@ const UNSORTED_POSTS: Post[] = [
       },
     ],
   }),
+  createPost({
+    title: 'Expense Tracker',
+    publishedAt: new Date('2025-09-12'), // September 12, 2025
+    content:
+      'Upload UberEats or DoorDash PDF receipts, or manually enter other expenses, track them in real-time, and auto-match reimbursements with smart matching logic.',
+    image: '/expense-tracker/Main.png',
+    category: ProjectType.WEB,
+    tags: [
+      'Web App',
+      'Expense Tracking',
+      'Receipt Parsing',
+      'Reimbursements',
+      'UberEats',
+      'DoorDash',
+    ],
+    github: 'https://github.com/DigitalEpidemic/expense-tracker',
+    detailedContent:
+      'Expense Tracker is a web application built to simplify tracking work-related expenses by parsing PDF receipts or entering them manually. Drop in UberEats or DoorDash receipts, and the app extracts merchant, date, amount, and category using receipt parsers when possible. Expenses are synced in real time and organized monthly, with filters to view reimbursed vs pending amounts.\n\nThe smart Reimbursement Matching feature helps once you receive reimbursement target amounts: you enter the reimbursement sum, and the app finds combinations of pending expenses that match that sum, allowing bulk marking those as reimbursed. The stack includes React and TypeScript for the frontend, Tailwind CSS for responsive styling, Firebase (Auth and Firestore) for back-end sync and storage, and PDF parsing utilities to interpret receipt data. It also includes features like expense duplication, bulk receipt uploads, summary dashboards, and test coverage to ensure correct parsing & matching logic.',
+    technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Firebase'],
+    projectPurpose:
+      'Build a robust tool for work-expense tracking with minimal manual entry and a matching mechanism to automate reimbursement marking.',
+    problemSolved:
+      'Reduces the tedium of entering receipt data manually and eliminates guesswork in finding which expenses add up to reimbursement totals.',
+    keyFeatures: [
+      'Drag-and-drop PDF receipt parsing (UberEats, DoorDash)',
+      'Manual expense entry for any type of expense',
+      'Monthly grouping and filters by reimbursement status',
+      'Automatic matching of expenses to reimbursement sums',
+      'Responsive UI for web and mobile views',
+    ],
+    screenshots: [
+      {
+        url: '/expense-tracker/Login.png',
+        caption: 'Google sign-in for authentication',
+      },
+      {
+        url: '/expense-tracker/AddExpense.png',
+        caption: 'Adding a new expense',
+      },
+      {
+        url: '/expense-tracker/MatchReimbursements.png',
+        caption: 'Matching reimbursements dialog',
+      },
+      {
+        url: '/expense-tracker/MatchReimbursements2.png',
+        caption: 'Found matching expenses',
+      },
+    ],
+  }),
 ];
 
 export const POSTS: Post[] = UNSORTED_POSTS;
