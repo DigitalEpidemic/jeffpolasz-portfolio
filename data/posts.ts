@@ -2184,7 +2184,7 @@ const UNSORTED_POSTS: Post[] = [
     bestIndex: 5,
     publishedAt: new Date('2025-09-12'), // September 12, 2025
     content:
-      'Upload UberEats or DoorDash PDF receipts, or manually enter other expenses, track them in real-time, and auto-match reimbursements with smart matching logic.',
+      'A web application for tracking work expenses through PDF receipt parsing and smart reimbursement matching with real-time syncing.',
     image: '/expense-tracker/Main.png',
     category: ProjectType.WEB,
     tags: [
@@ -2196,7 +2196,7 @@ const UNSORTED_POSTS: Post[] = [
     ],
     github: 'https://github.com/DigitalEpidemic/expense-tracker',
     detailedContent:
-      'Expense Tracker is a web application built to simplify tracking work-related expenses by parsing PDF receipts or entering them manually. Drop in UberEats or DoorDash receipts, and the app extracts merchant, date, amount, and category using receipt parsers when possible. Expenses are synced in real time and organized monthly, with filters to view reimbursed vs pending amounts.\n\nThe smart Reimbursement Matching feature helps once you receive reimbursement target amounts: you enter the reimbursement sum, and the app finds combinations of pending expenses that match that sum, allowing bulk marking those as reimbursed. The stack includes React and TypeScript for the frontend, Tailwind CSS for responsive styling, Firebase (Auth and Firestore) for back-end sync and storage, and PDF parsing utilities to interpret receipt data. It also includes features like expense duplication, bulk receipt uploads, summary dashboards, and test coverage to ensure correct parsing and matching logic.',
+      'Expense Tracker is a web application built to simplify tracking work-related expenses by parsing PDF receipts or entering them manually. Drop in UberEats or DoorDash receipts, and the app extracts merchant, date, amount, and category using receipt parsers when possible. Expenses are synced in real time and organized monthly, with filters to view reimbursed vs pending amounts.\n\nThe smart Reimbursement Matching feature helps once you receive reimbursement target amounts: you enter the reimbursement sum, and the app finds combinations of pending expenses that match that sum, allowing bulk marking those as reimbursed. The stack includes React and TypeScript for the frontend, Tailwind CSS for responsive styling, Firebase (Auth and Firestore) for back-end sync and storage, and PDF parsing utilities to interpret receipt data. It also includes features like expense duplication, bulk receipt uploads, and summary dashboards.',
     technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Firebase'],
     projectPurpose:
       'Build a robust tool for work-expense tracking with minimal manual entry and a matching mechanism to automate reimbursement marking.',
@@ -2207,7 +2207,7 @@ const UNSORTED_POSTS: Post[] = [
       'Manual expense entry for any type of expense',
       'Monthly grouping and filters by reimbursement status',
       'Automatic matching of expenses to reimbursement sums',
-      'Responsive UI for web and mobile views',
+      'Responsive UI',
     ],
     screenshots: [
       {
