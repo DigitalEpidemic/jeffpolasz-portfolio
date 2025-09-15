@@ -1,3 +1,5 @@
+import { ProjectType } from '@/data/constants';
+import { POSTS } from '@/data/posts';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import ProfileHeader from '../profile-header';
 
@@ -68,10 +70,17 @@ describe('ProfileHeader', () => {
   });
 
   it('displays project counts correctly', () => {
+    const webProjectsLength = POSTS.filter(
+      (post) => post.category === ProjectType.WEB
+    ).length;
+    const gameProjectsLength = POSTS.filter(
+      (post) => post.category === ProjectType.GAME
+    ).length;
+
     render(<ProfileHeader {...defaultProps} />);
 
-    expect(screen.getByText('10')).toBeInTheDocument(); // Web projects
-    expect(screen.getByText('34')).toBeInTheDocument(); // Game projects
+    expect(screen.getByText(webProjectsLength.toString())).toBeInTheDocument(); // Web projects
+    expect(screen.getByText(gameProjectsLength.toString())).toBeInTheDocument(); // Game projects
     expect(screen.getByText('Web projects')).toBeInTheDocument();
     expect(screen.getByText('Game projects')).toBeInTheDocument();
   });
