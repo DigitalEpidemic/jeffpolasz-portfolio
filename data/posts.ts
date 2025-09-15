@@ -238,7 +238,7 @@ const UNSORTED_POSTS: Post[] = [
   }),
   createPost({
     title: 'Power Calc',
-    bestIndex: 5,
+    bestIndex: 6,
     publishedAt: new Date('2021-03-19'), // March 19, 2021
     content:
       'A comprehensive powerlifting calculator with 1RM estimation, percentage-based training loads, Wilks coefficient scoring, weight conversion, and intelligent plate loading for competitive lifters.',
@@ -386,7 +386,7 @@ const UNSORTED_POSTS: Post[] = [
   }),
   createPost({
     title: 'Shinobi Jump',
-    bestIndex: 10,
+    bestIndex: 11,
     publishedAt: new Date('2020-03-09'), // March 9, 2020
     content:
       'A fast-paced ninja wall-jumping mobile game built in Unity. Tap to leap between walls, dodge spikes, and climb endlessly.',
@@ -437,7 +437,7 @@ const UNSORTED_POSTS: Post[] = [
   }),
   createPost({
     title: 'Tappy Road',
-    bestIndex: 9,
+    bestIndex: 10,
     publishedAt: new Date('2019-11-01'), // November 1, 2019
     content:
       'An endless arcade game where you slide road pieces under your vehicle to avoid falling. Test your reflexes and keep your path going!',
@@ -535,7 +535,7 @@ const UNSORTED_POSTS: Post[] = [
   }),
   createPost({
     title: 'Twisty Dots',
-    bestIndex: 13,
+    bestIndex: 14,
     publishedAt: new Date('2019-11-05'), // November 5, 2019
     content:
       'A fast-paced colour-matching arcade game built in Unity. Tap, match, and twist through rings while avoiding crashes.',
@@ -585,7 +585,7 @@ const UNSORTED_POSTS: Post[] = [
   }),
   createPost({
     title: 'Dodge Racer',
-    bestIndex: 11,
+    bestIndex: 12,
     publishedAt: new Date('2020-03-05'), // March 5, 2020
     content:
       "A drifting arcade racer built in Unity. Navigate obstacle courses, dodge traffic, outrun the cops, and don't crash!",
@@ -731,7 +731,7 @@ const UNSORTED_POSTS: Post[] = [
   }),
   createPost({
     title: 'Can You Shoot?',
-    bestIndex: 12,
+    bestIndex: 13,
     publishedAt: new Date('2019-12-27'), // December 27, 2019
     content:
       'An endless arcade shooter. Tap to keep the can in the air and rack up points in this reflex-based challenge!',
@@ -1595,7 +1595,7 @@ const UNSORTED_POSTS: Post[] = [
   }),
   createPost({
     title: 'Doodle Jump Clone',
-    bestIndex: 14,
+    bestIndex: 15,
     publishedAt: new Date('2018-11-25'), // November 25, 2018
     content:
       'A faithful Unity recreation of the classic Doodle Jump game. Leap from platform to platform, avoid falling, and chase a high score.',
@@ -1697,7 +1697,7 @@ const UNSORTED_POSTS: Post[] = [
   }),
   createPost({
     title: 'FPS Multiplayer',
-    bestIndex: 8,
+    bestIndex: 9,
     publishedAt: new Date('2018-05-11'), // May 11, 2018
     content:
       'A fast-paced first-person shooter with online multiplayer support. Switch weapons, sprint, crouch, and blast opponents in real-time over the network.',
@@ -1748,7 +1748,7 @@ const UNSORTED_POSTS: Post[] = [
   }),
   createPost({
     title: 'League of Legends Clone',
-    bestIndex: 7,
+    bestIndex: 8,
     publishedAt: new Date('2018-09-19'), // September 19, 2018
     content:
       'A Unity recreation of League of Legends, featuring working animations, player/minion/turret attacks, camera controls, A-click combat, and even bush-hiding shaders for authentic gameplay.',
@@ -1801,7 +1801,7 @@ const UNSORTED_POSTS: Post[] = [
   }),
   createPost({
     title: 'Role Playing Game',
-    bestIndex: 6,
+    bestIndex: 7,
     publishedAt: new Date('2018-08-02'), // August 2, 2018
     content:
       'A fully playable RPG featuring enemies, health and skill systems, respawning, objectives, voice-acted enemies with subtitles, and immersive sound design.',
@@ -2181,13 +2181,13 @@ const UNSORTED_POSTS: Post[] = [
   }),
   createPost({
     title: 'Expense Tracker',
+    bestIndex: 5,
     publishedAt: new Date('2025-09-12'), // September 12, 2025
     content:
       'Upload UberEats or DoorDash PDF receipts, or manually enter other expenses, track them in real-time, and auto-match reimbursements with smart matching logic.',
     image: '/expense-tracker/Main.png',
     category: ProjectType.WEB,
     tags: [
-      'Web App',
       'Expense Tracking',
       'Receipt Parsing',
       'Reimbursements',
@@ -2196,7 +2196,7 @@ const UNSORTED_POSTS: Post[] = [
     ],
     github: 'https://github.com/DigitalEpidemic/expense-tracker',
     detailedContent:
-      'Expense Tracker is a web application built to simplify tracking work-related expenses by parsing PDF receipts or entering them manually. Drop in UberEats or DoorDash receipts, and the app extracts merchant, date, amount, and category using receipt parsers when possible. Expenses are synced in real time and organized monthly, with filters to view reimbursed vs pending amounts.\n\nThe smart Reimbursement Matching feature helps once you receive reimbursement target amounts: you enter the reimbursement sum, and the app finds combinations of pending expenses that match that sum, allowing bulk marking those as reimbursed. The stack includes React and TypeScript for the frontend, Tailwind CSS for responsive styling, Firebase (Auth and Firestore) for back-end sync and storage, and PDF parsing utilities to interpret receipt data. It also includes features like expense duplication, bulk receipt uploads, summary dashboards, and test coverage to ensure correct parsing & matching logic.',
+      'Expense Tracker is a web application built to simplify tracking work-related expenses by parsing PDF receipts or entering them manually. Drop in UberEats or DoorDash receipts, and the app extracts merchant, date, amount, and category using receipt parsers when possible. Expenses are synced in real time and organized monthly, with filters to view reimbursed vs pending amounts.\n\nThe smart Reimbursement Matching feature helps once you receive reimbursement target amounts: you enter the reimbursement sum, and the app finds combinations of pending expenses that match that sum, allowing bulk marking those as reimbursed. The stack includes React and TypeScript for the frontend, Tailwind CSS for responsive styling, Firebase (Auth and Firestore) for back-end sync and storage, and PDF parsing utilities to interpret receipt data. It also includes features like expense duplication, bulk receipt uploads, summary dashboards, and test coverage to ensure correct parsing and matching logic.',
     technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Firebase'],
     projectPurpose:
       'Build a robust tool for work-expense tracking with minimal manual entry and a matching mechanism to automate reimbursement marking.',
