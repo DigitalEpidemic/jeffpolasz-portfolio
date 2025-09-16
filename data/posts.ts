@@ -1869,7 +1869,7 @@ const UNSORTED_POSTS: Post[] = [
       'Upgraded Systems',
       'Experimental',
     ],
-    github: 'https://github.com/DigitalEpidemic/rpg-2-0-unity',
+    github: 'https://github.com/DigitalEpidemic/rpg2.0-unity',
     demo: 'https://unity-rpg2-demo.netlify.app/',
     detailedContent:
       'RPG 2.0 was an attempt to create a graphically upgraded version of my original RPG. While the project was never fully completed, it served as a sandbox for experimenting with new mechanics, visuals, and systems.\n\nThe key upgrades included a new map with improved environmental design, an upgraded auto-attacking system for smoother combat, a prototype enemy with enhanced pathfinding, patrolling and attack logic, a custom shader that makes the player visible behind walls to improve gameplay clarity, and a new camera controller that lets players orbit and pan around the character for better control and immersion.\n\nThis project demonstrates how I explored camera systems, shaders, and AI improvements in Unity as a natural evolution from my first RPG project.',
