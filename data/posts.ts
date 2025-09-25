@@ -244,7 +244,7 @@ const UNSORTED_POSTS: Post[] = [
       'A comprehensive powerlifting calculator with 1RM estimation, percentage-based training loads, Wilks coefficient scoring, weight conversion, and intelligent plate loading for competitive lifters.',
     image: '/powercalc/main.jpg',
     category: ProjectType.WEB,
-    tags: ['Fitness', 'Calculator', 'Training', 'Powerlifting'],
+    tags: ['Mobile App', 'Fitness', 'Calculator', 'Training', 'Powerlifting'],
     // github: "https://github.com/DigitalEpidemic/powercalc", // TODO: Add Contact for access or supply apk
     // demo: "https://powercalc.netlify.app",
     detailedContent:
@@ -2225,6 +2225,56 @@ const UNSORTED_POSTS: Post[] = [
       {
         url: '/expense-tracker/MatchReimbursements2.png',
         caption: 'Found matching expenses',
+      },
+    ],
+  }),
+  createPost({
+    title: 'RandoBites',
+    bestIndex: 5,
+    publishedAt: new Date('2025-09-24'), // September 24, 2025
+    content:
+      'A React Native app built with Expo that helps users discover restaurants with a Tinder-like swiping interface and location-based discovery.',
+    image: '/randobites/Main.png',
+    category: ProjectType.WEB,
+    tags: ['Mobile App', 'React Native', 'Expo', 'Food', 'Tinder'],
+    github: 'https://github.com/DigitalEpidemic/randobites',
+    detailedContent:
+      "RandoBites transforms the way people discover new restaurants by combining the intuitive swiping interface popularized by Tinder with real-time location-based restaurant data. Users can quickly browse through nearby restaurants, making split-second decisions about where they want to eat.\n\nThe app leverages the Geoapify API to provide comprehensive restaurant information including cuisine types and location details. Since Geoapify does not provide ratings, the app generates realistic random ratings to enrich the browsing experience and make restaurant cards feel more complete.\n\nI implemented a caching system that not only improves performance but also benefits all users in the same area by sharing cached data. One of the key features is the blacklist management system that remembers restaurants users have dismissed, ensuring all users won't see any incorrect or outdated restaurants.\n\nHowever, development eventually stalled on this project due to limitations in the Geoapify dataset, which lacked restaurant photos and ratings and often contained outdated entries for venues that no longer existed. An alternative was Google Places API, but that was not realistic due to high costs.",
+    technologies: [
+      'React Native',
+      'Expo',
+      'TypeScript',
+      'Supabase',
+      'Geoapify API',
+      'AsyncStorage',
+    ],
+    projectPurpose:
+      'Simplify restaurant discovery by providing a fun, intuitive way to find new dining options without the overwhelming choice paralysis of traditional restaurant apps',
+    problemSolved:
+      'Decision fatigue when choosing restaurants and the tedious process of browsing through endless lists of dining options',
+    keyFeatures: [
+      'Tinder-style swiping interface',
+      'Location-based restaurant discovery',
+      'Blacklist management',
+      'Intelligent caching',
+      'Randomized star ratings',
+    ],
+    screenshots: [
+      {
+        url: '/randobites/Match.png',
+        caption: 'Details about a matched restaurant',
+      },
+      {
+        url: '/randobites/Match2.png',
+        caption: 'More details about a matched restaurant',
+      },
+      {
+        url: '/randobites/Settings.png',
+        caption: 'Settings screen',
+      },
+      {
+        url: '/randobites/Debug.png',
+        caption: 'Debug screen',
       },
     ],
   }),
