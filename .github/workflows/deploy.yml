@@ -26,12 +26,15 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: 'out/*'
+          source: 'out/**'
           target: '/home/${{ secrets.SSH_USER }}/releases/deploy-${{ github.run_number }}'
+          strip_components: 1
           use_insecure_cipher: true
 
       - name: Swap symlink to new release & preserve .well-known
         uses: appleboy/ssh-action@v1.1.0
+        env:
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
@@ -39,22 +42,41 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           use_insecure_cipher: true
           script: |
-            TIMESTAMP="deploy-${GITHUB_RUN_NUMBER}"
+            TIMESTAMP="deploy-$GITHUB_RUN_NUMBER"
             RELEASE_DIR="/home/${{ secrets.SSH_USER }}/releases/$TIMESTAMP"
 
-            # Ensure releases and well-known folders exist
+            # Ensure releases folder, this release folder, and well-known exist
             mkdir -p ~/releases
+            mkdir -p "$RELEASE_DIR"
             mkdir -p ~/well-known
 
             # Symlink .well-known into the new release
-            ln -sfn ~/well-known $RELEASE_DIR/.well-known
+            ln -sfn ~/well-known "$RELEASE_DIR/.well-known"
 
             # Swap public_html symlink to point to the new release
-            ln -sfn $RELEASE_DIR ~/public_html
+            ln -sfn "$RELEASE_DIR" ~/public_html
 
             # Keep only the last 3 releases (1 active + 2 backups)
             cd ~/releases
             ls -t | tail -n +4 | xargs rm -rf || true
+
+      - name: Verify public_html symlink
+        uses: appleboy/ssh-action@v1.1.0
+        env:
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          use_insecure_cipher: true
+          script: |
+            CURRENT_LINK=$(readlink ~/public_html)
+            echo "public_html is currently pointing to: $CURRENT_LINK"
+            if [[ "$CURRENT_LINK" != "/home/${{ secrets.SSH_USER }}/releases/deploy-$GITHUB_RUN_NUMBER" ]]; then
+              echo "Error: public_html symlink is not pointing to the latest release!"
+              exit 1
+            fi
 
       - name: Mark latest commit as deployed
         run: npm run mark-deployed
