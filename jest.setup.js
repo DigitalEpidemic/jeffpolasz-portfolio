@@ -18,7 +18,7 @@ jest.mock('next/navigation', () => ({
 
 // Mock next/link
 jest.mock('next/link', () => {
-  return ({ children, ...props }) => {
+  return function MockLink({ children, ...props }) {
     return <a {...props}>{children}</a>;
   };
 });
@@ -28,8 +28,8 @@ jest.mock('next/image', () => {
   return function MockImage(props) {
     // Only pass standard img element props to avoid React DOM warnings
     const { src, alt, className, style, onLoad, onError } = props;
-    // eslint-disable-next-line @next/next/no-img-element
     return (
+      // eslint-disable-next-line @next/next/no-img-element
       <img
         src={src}
         alt={alt}
