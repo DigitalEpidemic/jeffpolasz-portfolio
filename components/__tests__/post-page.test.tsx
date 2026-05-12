@@ -214,7 +214,10 @@ describe('PostPageClient', () => {
   });
 
   it('renders default views when views not provided', () => {
-    const postWithoutViews = { ...mockPost, views: undefined } as unknown as Post;
+    const postWithoutViews = {
+      ...mockPost,
+      views: undefined,
+    } as unknown as Post;
 
     render(<PostPageClient post={postWithoutViews} />);
 
@@ -223,7 +226,10 @@ describe('PostPageClient', () => {
   });
 
   it('renders default stars when stars not provided', () => {
-    const postWithoutStars = { ...mockPost, stars: undefined } as unknown as Post;
+    const postWithoutStars = {
+      ...mockPost,
+      stars: undefined,
+    } as unknown as Post;
 
     render(<PostPageClient post={postWithoutStars} />);
 
