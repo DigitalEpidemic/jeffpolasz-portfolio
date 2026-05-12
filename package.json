@@ -8,7 +8,7 @@
     "build": "next build && node scripts/post-build-meta.js",
     "post-build-meta": "node scripts/post-build-meta.js",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "jest",
