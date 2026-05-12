@@ -1,4 +1,5 @@
 import { ProjectType } from '@/data/constants';
+import { Post } from '@/data/posts';
 import { useIsMobile } from '@/hooks/use-media-query';
 import { fireEvent, render, screen } from '@testing-library/react';
 import PostPageClient from '../post-page';
@@ -173,6 +174,8 @@ describe('PostPageClient', () => {
       publishedAt: new Date('2023-01-01'),
       votes: 5,
       content: 'Minimal content.',
+      views: 0,
+      stars: 0,
     };
 
     render(<PostPageClient post={minimalPost} />);
@@ -211,7 +214,7 @@ describe('PostPageClient', () => {
   });
 
   it('renders default views when views not provided', () => {
-    const postWithoutViews = { ...mockPost, views: undefined };
+    const postWithoutViews = { ...mockPost, views: undefined } as unknown as Post;
 
     render(<PostPageClient post={postWithoutViews} />);
 
@@ -220,7 +223,7 @@ describe('PostPageClient', () => {
   });
 
   it('renders default stars when stars not provided', () => {
-    const postWithoutStars = { ...mockPost, stars: undefined };
+    const postWithoutStars = { ...mockPost, stars: undefined } as unknown as Post;
 
     render(<PostPageClient post={postWithoutStars} />);
 

@@ -9,6 +9,7 @@
     "post-build-meta": "node scripts/post-build-meta.js",
     "start": "next start",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "jest",
